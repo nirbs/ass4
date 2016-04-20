@@ -6,8 +6,6 @@ import java.util.Map;
  * Created by user on 13/04/2016.
  */
 public class Plus extends BaseExpression implements Expression {
-    Expression e1;
-    Expression e2;
 
     public Plus (Expression e1, Expression e2){
         super(e1, e2);
@@ -24,11 +22,11 @@ public class Plus extends BaseExpression implements Expression {
 
 
     public String toString(){
-        return "((" + e1.toString() + ")" + "+ (" + e2.toString() + "))";
+        return "((" + e1.toString() + ")" + "+(" + e2.toString() + "))";
     }
 
     public Expression assign(String var, Expression expression){
-        if (var == this.toString()) {
+        if (var.equals(this.toString())) {
             return expression;
         }
         else if ( (Expression) this instanceof Var) {

@@ -16,6 +16,10 @@ public class Num implements Expression {
         this.num = newNum;
     }
 
+    public String toString() {
+        return Double.toString(this.num);
+    }
+
     public double evaluate(Map<String, Double> assignment) throws Exception {
         return this.num;
     }
@@ -30,6 +34,6 @@ public class Num implements Expression {
     }
 
     public Expression assign(String var, Expression expression) {
-        return null;
+        return this;
     }
 }
