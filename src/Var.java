@@ -3,7 +3,7 @@
  */
 public class Var {
     String var;
-    double value;
+    Expression value;
 
     public Var(String var){
         this.var=var;
@@ -17,11 +17,11 @@ public class Var {
         this.var = var;
     }
 
-    public double getValue() {
+    public Expression getValue() {
         return value;
     }
 
-    public void setValue(double value) {
-        value = value;
+    public void setValue(Expression e) {
+        value = e;
     }
 }
