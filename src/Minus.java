@@ -4,38 +4,35 @@ import java.util.Map;
 /**
  * Created by user on 13/04/2016.
  */
-public class Minus implements Expression {
+public class Minus extends BaseExpression implements Expression {
     Expression e1;
     Expression e2;
 
     public Minus (Expression e1, Expression e2){
-        this.e1=e1;
-        this.e2=e2;
+        super(e1, e2);
     }
 
-    public double evaluate(Map<String, Double> assignment) throws Exception {
-        if ((Expression) this instanceof Num) {
-            Num myNum =  (Num) (Expression) this;
-            return myNum.getNum();
-        }
-        else if ((Expression) this instanceof Var){
-            return assignment.get(this.toString());
-        }
+
+    public double evaluate(Map<String, Double> assignment) throws Exception{
         return e1.evaluate(assignment) - e2.evaluate(assignment);
     }
 
-    @Override
-    public double evaluate() throws Exception {
-        return 0;
+    public double evaluate() throws Exception{
+        return e1.evaluate() - e2.evaluate();
     }
 
-    @Override
-    public List<String> getVariables() {
-        return null;
+    public String toString(){
+        return e1.toString() + "-" + e2.toString();
     }
 
-    @Override
-    public Expression assign(String var, Expression expression) {
-        return null;
+    public Expression assign(String var, Expression expression){
+        if (var == this.toString()) {
+            return expression;
+        }
+        else if ( (Expression) this instanceof Var) {
+            return (Expression) this;
+        }
+        return new Minus(e1.assign(var, expression), e2.assign(var,expression));
     }
+
 }

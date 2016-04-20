@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Matan on 20/04/2016.
@@ -11,6 +12,10 @@ public abstract class BaseExpression {
     public BaseExpression (Expression e1, Expression e2){
         this.e1=e1;
         this.e2=e2;
+    }
+
+    public double evaluate() throws Exception{
+        return e1.evaluate() + e2.evaluate();
     }
 
     public List<String> getVariables(){
@@ -25,6 +30,8 @@ public abstract class BaseExpression {
         newList.addAll(e2.getVariables());
         return newList;
     }
+
+
 
 
 }
