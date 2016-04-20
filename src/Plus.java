@@ -13,13 +13,22 @@ public class Plus extends BaseExpression implements Expression {
 
 
     public double evaluate(Map<String, Double> assignment) throws Exception{
-        return e1.evaluate(assignment) + e2.evaluate(assignment);
+        try {
+            return e1.evaluate(assignment) + e2.evaluate(assignment);
+        } catch(Exception e) {
+            System.out.println("No such expression!");
+            throw e;
+        }
     }
 
     public double evaluate() throws Exception{
-        return e1.evaluate() + e2.evaluate();
+        try {
+            return e1.evaluate() + e2.evaluate();
+        } catch(Exception e) {
+            System.out.println("No such expression!");
+            throw e;
+        }
     }
-
 
     public String toString(){
         return "((" + e1.toString() + ")" + "+(" + e2.toString() + "))";
