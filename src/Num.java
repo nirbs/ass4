@@ -4,14 +4,14 @@
 public class Num {
     double num;
 
-    public Num (int num){
+    public Num (double num){
         this.num=num;
     }
     public double getNum() {
         return num;
     }
 
-    public void setNum(int num) {
+    public void setNum(double num) {
         this.num = num;
     }
 }
