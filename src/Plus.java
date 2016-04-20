@@ -24,7 +24,7 @@ public class Plus extends BaseExpression implements Expression {
 
 
     public String toString(){
-        return e1.toString() + "+" + e2.toString();
+        return "((" + e1.toString() + ")" + "+ (" + e2.toString() + "))";
     }
 
     public Expression assign(String var, Expression expression){

@@ -21,8 +21,8 @@ public class Minus extends BaseExpression implements Expression {
         return e1.evaluate() - e2.evaluate();
     }
 
-    public String toString(){
-        return e1.toString() + "-" + e2.toString();
+    public String toString() {
+        return "((" + e1.toString() + ")" + "- (" + e2.toString() + "))";
     }
 
     public Expression assign(String var, Expression expression){
