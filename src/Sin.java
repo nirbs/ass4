@@ -87,6 +87,6 @@ public class Sin extends UnaryExpression implements Expression {
 
     @Override
     public Expression differentiate(String var) {
-        return null;
+        return new Mult (new Cos(e1),e1.differentiate(var));
     }
 }

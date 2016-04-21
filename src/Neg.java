@@ -87,7 +87,7 @@ public class Neg extends UnaryExpression implements Expression {
 
     @Override
     public Expression differentiate(String var) {
-        return null;
+        return new Mult(-1,e1.differentiate(var));
     }
 
 }
