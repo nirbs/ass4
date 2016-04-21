@@ -7,7 +7,6 @@ import java.util.Map;
  */
 public class Var implements Expression{
     String var; // The name of the var.
-    double value; // The value of the var.
 
     /**
      * Var constructor.
@@ -18,38 +17,27 @@ public class Var implements Expression{
     }
 
     /**
-     * setVar method sets the name of the var.
-     * @param var the desired name of the var.
-     */
-    public void setVar(String var) {
-        this.var = var;
-    }
-
-    /**
-     * setValue method sets the value of the var.
-     * @param val the desired value of the var.
-     */
-    public void setValue(double val) {
-        value = val;
-    }
-
-    /**
      * evaluate method returns the value of the Var according to the map given.
      * @param assignment the map for the values of variables.
-     * @return the value of the Var according to the map
+     * @return the value of the Var according to the map.
      * @throws Exception in case an invalid Expression was received.
      */
-    public double evaluate(Map<String, Double> assignment) throws Exception{
-        return assignment.get(this.var);
+    public double evaluate(Map<String, Double> assignment) throws Exception {
+        try {
+            return assignment.get(this.var);
+        }
+        catch (Exception e) {
+            System.out.println("No such expression!");
+            throw e;
+        }
     }
 
     /**
-     * evaluate method returns the value
-     * @return the value of the Var according to the map
-     * @throws Exception in case an invalid Expression was received.
+     * evaluate method throws an exception because we cant evaluate a variable value without a map.
+     * @throws Exception in case there is no map.
      */
     public double evaluate() throws Exception{
-        return this.value;
+        throw new Exception("Cant get value without map");
     }
 
     /**
