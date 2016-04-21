@@ -139,6 +139,6 @@ public class Log extends BinaryExpression implements Expression {
 
     @Override
     public Expression differentiate(String var) {
-        return new Div (1,(new Mult(e2,new Log (new Const("e",2.71828), e1))));
+        return new Mult(new Div (1,(new Mult(e2,new Log (new Const("e",2.71828), e1)))), e2.differentiate(var));
     }
 }
