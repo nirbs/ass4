@@ -26,8 +26,8 @@ public class ExpressionsTest {
         }
 
 
-
-        Expression e3 = e2.assign("x", e1);
+        Expression e3 = new Log()
+        Expression e4 = e2.assign("x", e1);
         System.out.println(e3);
 
         try {

@@ -36,12 +36,6 @@ public class Log extends BinaryExpression implements Expression{
     }
 
     public Expression assign(String var, Expression expression){
-        if (var.equals(this.toString())) {
-            return expression;
-        }
-        else if ( (Expression) this instanceof Var) {
-            return (Expression) this;
-        }
         return new Log(e1.assign(var, expression), e2.assign(var,expression));
     }
 }

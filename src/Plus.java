@@ -38,9 +38,7 @@ public class Plus extends BinaryExpression implements Expression {
         return "((" + e1.toString() + ")" + "+(" + e2.toString() + "))";
     }
 
-    public Expression assign(String var, Expression expression){
-
-
+    public Expression assign(String var, Expression expression) {
         return new Plus(e1.assign(var, expression), e2.assign(var,expression));
     }
 }

@@ -35,13 +35,7 @@ public class Mult extends BinaryExpression implements Expression {
         return "((" + e1.toString() + ")" + "*(" + e2.toString() + "))";
     }
 
-    public Expression assign(String var, Expression expression){
-        if (var.equals(this.toString())) {
-            return expression;
-        }
-        else if ( (Expression) this instanceof Var) {
-            return (Expression) this;
-        }
+    public Expression assign(String var, Expression expression) {
         return new Mult(e1.assign(var, expression), e2.assign(var,expression));
     }
 }
