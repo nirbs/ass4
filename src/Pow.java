@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,7 +40,7 @@ public class Pow extends BinaryExpression implements Expression {
      * @param e the second Expression.
      */
     public Pow (double n, Expression e){
-        super (e, new Num (n));
+        super (new Num (n),e);
     }
 
     /**
@@ -48,7 +49,7 @@ public class Pow extends BinaryExpression implements Expression {
      * @param e the second Expression
      */
     public Pow (String s, Expression e){
-        super (e, new Var (s));
+        super (new Var (s), e);
     }
 
     /**
@@ -66,7 +67,7 @@ public class Pow extends BinaryExpression implements Expression {
      * @param v the name of the var of the first Expression which will be a Var Expression
      */
     public Pow (double n, String v){
-        super ((new Var(v)), new Num (n));
+        super (new Num (n), (new Var(v)));
     }
 
     /**
@@ -121,7 +122,7 @@ public class Pow extends BinaryExpression implements Expression {
      * @return the right string format of the expression.
      */
     public String toString(){
-        return "((" + e1.toString() + ")" + "^(" + e2.toString() + "))";
+        return "(" + e1.toString() + "^" + e2.toString() + ")";
     }
 
     /**
@@ -132,6 +133,18 @@ public class Pow extends BinaryExpression implements Expression {
      */
     public Expression assign(String var, Expression expression){
         return new Pow(e1.assign(var, expression), e2.assign(var,expression));
+    }
+
+    public Expression differentiate(String var) {
+        try {
+            return new Mult(this,
+                    new Plus(new Mult(e1.differentiate(var),
+                            new Div(e2.evaluate(), new Var(var))),new Mult(e2.differentiate(var),
+                            new Log(new Const("e", 2.71828), new Var(var)))));
+        } catch (Exception e) {
+            System.out.println("cannot evaluate!");
+            return null;
+        }
     }
 
 }

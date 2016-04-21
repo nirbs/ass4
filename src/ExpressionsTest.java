@@ -63,6 +63,9 @@ public class ExpressionsTest {
             System.out.println(v);
         }
         urineTest();
+        Expression pow = new Pow("x", 4);
+        Expression dPow = pow.differentiate("x");
+        System.out.println(dPow);
     }
 
     public static void reverseTest() {

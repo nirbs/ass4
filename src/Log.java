@@ -41,7 +41,7 @@ public class Log extends BinaryExpression implements Expression {
      * @param e the second Expression.
      */
     public Log (double n, Expression e){
-        super (e, new Num (n));
+        super (new Num (n),e);
     }
 
     /**
@@ -50,7 +50,7 @@ public class Log extends BinaryExpression implements Expression {
      * @param e the second Expression
      */
     public Log (String s, Expression e){
-        super (e, new Var (s));
+        super (new Var (s), e);
     }
 
     /**
@@ -68,7 +68,7 @@ public class Log extends BinaryExpression implements Expression {
      * @param v the name of the var of the first Expression which will be a Var Expression
      */
     public Log (double n, String v){
-        super ((new Var(v)), new Num (n));
+        super (new Num (n), (new Var(v)));
     }
 
     /**
@@ -124,7 +124,7 @@ public class Log extends BinaryExpression implements Expression {
      * @return the right string format of the expression.
      */
     public String toString(){
-        return "(log(" + e1.toString() + "," + e2.toString()  + "))";
+        return "log(" + e1.toString() + "," + e2.toString()  + ")";
     }
 
     /**
@@ -135,5 +135,10 @@ public class Log extends BinaryExpression implements Expression {
      */
     public Expression assign(String var, Expression expression){
         return new Log(e1.assign(var, expression), e2.assign(var,expression));
+    }
+
+    @Override
+    public Expression differentiate(String var) {
+        return null;
     }
 }

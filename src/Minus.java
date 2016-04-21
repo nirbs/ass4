@@ -40,7 +40,7 @@ public class Minus extends BinaryExpression implements Expression {
      * @param e the second Expression.
      */
     public Minus (double n, Expression e){
-        super (e, new Num (n));
+        super (new Num (n),e);
     }
 
     /**
@@ -49,7 +49,7 @@ public class Minus extends BinaryExpression implements Expression {
      * @param e the second Expression
      */
     public Minus (String s, Expression e){
-        super (e, new Var (s));
+        super (new Var (s), e);
     }
 
     /**
@@ -67,7 +67,7 @@ public class Minus extends BinaryExpression implements Expression {
      * @param v the name of the var of the first Expression which will be a Var Expression
      */
     public Minus (double n, String v){
-        super ((new Var(v)), new Num (n));
+        super (new Num (n), (new Var(v)));
     }
 
     /**
@@ -88,12 +88,6 @@ public class Minus extends BinaryExpression implements Expression {
         super ((new Num(n1)), new Num (n2));
     }
 
-    /**
-     * evaluate Method subtracts the two expression according to the map it gets.
-     * @param assignment the map for the values of the variables.
-     * @return the result of the subtraction between the two Expression.
-     * @throws Exception in case an invalid Expression was received.
-     */
     public double evaluate(Map<String, Double> assignment) throws Exception{
         try {
             return e1.evaluate(assignment) - e2.evaluate(assignment);
@@ -133,6 +127,11 @@ public class Minus extends BinaryExpression implements Expression {
      */
     public Expression assign(String var, Expression expression){
         return new Minus(e1.assign(var, expression), e2.assign(var,expression));
+    }
+
+    @Override
+    public Expression differentiate(String var) {
+        return null;
     }
 
 }

@@ -85,4 +85,9 @@ public class Neg extends UnaryExpression implements Expression {
         return new Neg(e1.assign(var, expression));
     }
 
+    @Override
+    public Expression differentiate(String var) {
+        return null;
+    }
+
 }

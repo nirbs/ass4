@@ -84,4 +84,9 @@ public class Sin extends UnaryExpression implements Expression {
     public Expression assign(String var, Expression expression){
         return new Sin(e1.assign(var, expression));
     }
+
+    @Override
+    public Expression differentiate(String var) {
+        return null;
+    }
 }

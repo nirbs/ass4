@@ -72,7 +72,7 @@ public class Cos extends UnaryExpression implements Expression {
      * @return the string representation of cosine expression.
      */
     public String toString(){
-        return "(" + "cos(" + e1.toString() + "))";
+        return "cos(" + e1.toString() + ")";
     }
 
     /**
@@ -83,6 +83,11 @@ public class Cos extends UnaryExpression implements Expression {
      */
     public Expression assign(String var, Expression expression){
         return new Cos(e1.assign(var, expression));
+    }
+
+    @Override
+    public Expression differentiate(String var) {
+        return null;
     }
 
 }

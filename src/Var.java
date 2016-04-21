@@ -73,4 +73,11 @@ public class Var implements Expression{
         return this;
     }
 
+    public Expression differentiate(String var) {
+        if (var.equals(this.toString())) {
+            return new Num(1);
+        }
+        return new Num(0);
+    }
+
 }
