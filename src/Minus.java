@@ -131,7 +131,8 @@ public class Minus extends BinaryExpression implements Expression {
 
     @Override
     public Expression differentiate(String var) {
-        return null;
+        return new Minus(e1.differentiate(var), e2.differentiate(var));
+
     }
 
 }

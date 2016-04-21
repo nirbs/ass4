@@ -137,6 +137,6 @@ public class Plus extends BinaryExpression implements Expression {
 
     @Override
     public Expression differentiate(String var) {
-        return null;
+        return new Plus(e1.differentiate(var), e2.differentiate(var));
     }
 }
