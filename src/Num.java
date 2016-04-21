@@ -34,6 +34,6 @@ public class Num implements Expression {
     }
 
     public Expression assign(String var, Expression expression) {
-        return this;
+        return new Num(this.num);
     }
 }

@@ -5,15 +5,11 @@ import java.util.List;
  * Created by Matan on 20/04/2016.
  */
 public abstract class BaseExpression {
-        Expression e;
+    protected Expression e1;
 
 
     public BaseExpression (Expression e){
-        this.e=e;
-    }
-
-    public double evaluate() throws Exception{
-        return e.evaluate();
+        this.e1 = e;
     }
 
     public List<String> getVariables(){
@@ -24,9 +20,11 @@ public abstract class BaseExpression {
         if ((Expression) this instanceof Num){
             return this.getVariables();
         }
-        newList.addAll(e.getVariables());
+        newList.addAll(e1.getVariables());
         return newList;
     }
+
+
 
 
 

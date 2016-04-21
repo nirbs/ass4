@@ -12,7 +12,6 @@ public class Log extends BaseExpression implements Expression{
 
     public double evaluate(Map<String, Double> assignment) throws Exception{
         try {
-
             return Math.log(e1.evaluate(assignment)) / Math.log(e2.evaluate(assignment));
         } catch(Exception e) {
             System.out.println("No such expression!");

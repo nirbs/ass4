@@ -36,7 +36,7 @@ public class Var implements Expression{
         return this.var;
     }
     public Expression assign(String var, Expression expression){
-        return expression;
+        return new Var(this.getVariables().get(0));
     }
 
 }

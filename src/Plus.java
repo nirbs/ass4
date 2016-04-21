@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * Created by user on 13/04/2016.
  */
-public class Plus extends BaseExpression implements Expression {
+public class Plus extends BinaryExpression implements Expression {
 
     public Plus (Expression e1, Expression e2){
         super(e1, e2);
@@ -37,9 +37,6 @@ public class Plus extends BaseExpression implements Expression {
     public Expression assign(String var, Expression expression){
         if (var.equals(this.toString())) {
             return expression;
-        }
-        else if ( (Expression) this instanceof Var) {
-            return (Expression) this;
         }
         return new Plus(e1.assign(var, expression), e2.assign(var,expression));
     }
