@@ -137,6 +137,6 @@ public class Mult extends BinaryExpression implements Expression {
 
     @Override
     public Expression differentiate(String var) {
-        return null;
+        return new Plus(new Mult(e1.differentiate(var),e2),new Mult(e1,e2.differentiate(var)));
     }
 }

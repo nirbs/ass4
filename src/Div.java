@@ -135,9 +135,8 @@ public class Div extends BinaryExpression implements Expression {
         return new Div(e1.assign(var, expression), e2.assign(var,expression));
     }
 
-    @Override
     public Expression differentiate(String var) {
-        return null;
+        return new Neg(new Div(e2.differentiate(var),new Pow(e2,2)));
     }
 
 }

@@ -63,9 +63,51 @@ public class ExpressionsTest {
             System.out.println(v);
         }
         urineTest();
+
+
         Expression pow = new Pow("x", 4);
-        Expression dPow = pow.differentiate("x");
+        Expression dPow = pow.differentiate("y");
         System.out.println(dPow);
+
+        Expression mult = new Mult(3,"x");
+        Expression dx = mult.differentiate("y");
+        System.out.println(dx);
+
+        Expression div = new Div(1,"x");
+        Expression divX = div.differentiate("y");
+
+        Expression plus = new Plus(4, "x");
+        Expression plusX = plus.differentiate("y");
+
+        Expression minus = new Minus(4, "x");
+        Expression minusX = minus.differentiate("y");
+
+        Expression log = new Log(5, "x");
+        Expression logX = log.differentiate("y");
+
+        Expression cos = new Cos("x");
+        Expression cosX = cos.differentiate("y");
+
+        Expression sin = new Sin("x");
+        Expression sinX = sin.differentiate("y");
+
+        Expression neg = new Neg("x");
+        Expression negX = neg.differentiate("y");
+
+        System.out.println(divX);
+        System.out.println(plusX);
+        System.out.println(minusX);
+        System.out.println(logX);
+
+        System.out.println(cosX);
+        System.out.println(sinX);
+        System.out.println(negX);
+
+
+
+
+
+
     }
 
     public static void reverseTest() {

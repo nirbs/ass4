@@ -116,7 +116,7 @@ public class Minus extends BinaryExpression implements Expression {
      * @return the right string format of the expression.
      */
     public String toString() {
-        return  "((" + e1.toString() + ")" + "-(" + e2.toString() + "))";
+        return  "(" + e1.toString()  + "-" + e2.toString() + ")";
     }
 
     /**
