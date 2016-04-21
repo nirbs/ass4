@@ -140,53 +140,31 @@ public class Mult extends BinaryExpression implements Expression {
     }
 
     public Expression simplify() {
-        if (e1.getVariables().isEmpty()) {
+        Expression exp1 = e1.simplify();
+        Expression exp2 = e2.simplify();
+        if (exp1.getVariables().isEmpty()) {
             try {
-                double res1 = e1.evaluate();
-                if (res1 == 1) {
-                    return e2.simplify();
-                } else if (res1 == 0) {
+                double res = exp1.evaluate();
+                if (res == 1) {
+                    return exp2.simplify();
+                } else if (res == 0) {
                     return new Num(0);
                 }
-                return new Mult()
+                return new Mult(new Num(res), exp2.simplify());
             } catch (Exception e) {
             }
         }
-
-            double res = e1.evaluate();
-
-        } catch (Exception e) {
-            Expression exp = e1.simplify();
-
+        if (exp2.getVariables().isEmpty())
             try {
-                if (e2.evaluate() == 1) {
-                    return e1.simplify();
-                }
-                else if (e2.evaluate() == 0) {
+                double res = exp2.evaluate();
+                if (res == 1) {
+                    return exp1.simplify();
+                } else if (res == 0) {
                     return new Num(0);
                 }
-            } catch (Exception ex) {
-                return new Mult(e1.simplify(), e2.simplify());
+                return new Mult(new Num(res), exp1.simplify());
+            } catch (Exception e) {
             }
-        }
-        try {
-            if (e2.evaluate() == 1) {
-                return e1;
-            }
-            else if (e2.evaluate() == 0) {
-                return new Num(0);
-            }
-        } catch (Exception e) {
-            try {
-                if (e1.evaluate() == 1) {
-                    return e2;
-                } else if (e1.evaluate() == 0) {
-                    return new Num(0);
-                }
-            } catch (Exception ex) {
-                return new Mult(e1.simplify(), e2.simplify());
-            }
-        }
-        return this;
+        return new Mult(exp1,exp2);
     }
 }

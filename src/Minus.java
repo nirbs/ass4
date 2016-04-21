@@ -135,9 +135,42 @@ public class Minus extends BinaryExpression implements Expression {
 
     }
 
-    @Override
+
     public Expression simplify() {
-        return null;
+        Expression exp1 = e1.simplify();
+        Expression exp2 = e2.simplify();
+        if (exp1.getVariables().isEmpty()) {
+            try {
+                double res = exp1.evaluate();
+                if (res == 0) {
+                    if (exp2.toString().equals("0.0")) {
+                        return new Num(0);
+                    }
+                    if (exp1.toString().equals(exp2.toString())) {
+                        return new Num(0);
+                    }
+                    return new Neg(exp2.simplify());
+                }
+                return new Minus(new Num(res), exp2.simplify());
+            } catch (Exception e) {
+            }
+        }
+        if (exp2.getVariables().isEmpty())
+            try {
+                double res = exp2.evaluate();
+                if (res == 0) {
+                    return exp1.simplify();
+                }
+                if (exp1.toString().equals(exp2.toString())) {
+                    return new Num(0);
+                }
+                return new Minus(new Num(res), exp1.simplify());
+            } catch (Exception e) {
+            }
+        if (exp1.toString().equals(exp2.toString())) {
+            return new Num(0);
+        }
+        return new Minus(exp1, exp2);
     }
 
 }

@@ -142,12 +142,27 @@ public class Plus extends BinaryExpression implements Expression {
 
     @Override
     public Expression simplify() {
-        if (e1.toString().equals("0.0")) {
-            return e2;
+        Expression exp1 = e1.simplify();
+        Expression exp2 = e2.simplify();
+        if (exp1.getVariables().isEmpty()) {
+            try {
+                double res = exp1.evaluate();
+                if (res == 0) {
+                    return exp2.simplify();
+                }
+                return new Plus(new Num(res), exp2.simplify());
+            } catch (Exception e) {
+            }
         }
-        if (e2.toString().equals("0.0")) {
-            return e1;
-        }
-        return new Plus(e1.simplify(), e2.simplify());
+        if (exp2.getVariables().isEmpty())
+            try {
+                double res = exp2.evaluate();
+                if (res == 0) {
+                    return exp1.simplify();
+                }
+                return new Plus(new Num(res), exp1.simplify());
+            } catch (Exception e) {
+            }
+        return new Plus(exp1, exp2);
     }
 }

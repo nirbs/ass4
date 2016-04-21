@@ -107,8 +107,29 @@ public class ExpressionsTest {
         Expression exp = new Mult(new Mult(1,"x"),new Mult(0,"x"));
         System.out.println(exp.simplify());
 
+        System.out.println(plusX.simplify());
+        System.out.println(minusX.simplify());
 
+        Expression xMinusX = new Minus("X","X");
+        System.out.println(xMinusX.simplify());
 
+        Expression divAAdiv = new Div(7,7);
+        System.out.println(divAAdiv.simplify());
+
+        Expression divAKamchan = new Div (7,1);
+        Expression divNigmar = new Div (1,7);
+
+        Expression divYYYY = new Div("y","y");
+
+        Expression divY1 = new Div("y",1);
+
+        Expression minusDiv = new Minus(5,5);
+
+        System.out.println(divAKamchan.simplify());
+        System.out.println(divNigmar.simplify());
+        System.out.println(divYYYY.simplify());
+        System.out.println(divY1.simplify());
+        System.out.println(minusDiv.simplify());
 
 
 
