@@ -35,8 +35,11 @@ public class Var implements Expression{
     public String toString(){
         return this.var;
     }
-    public Expression assign(String var, Expression expression){
-        return new Var(this.getVariables().get(0));
+    public Expression assign(String var, Expression expression) {
+        if (var.equals(this.toString())) {
+            return expression;
+        }
+        return this;
     }
 
 }

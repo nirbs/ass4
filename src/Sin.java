@@ -2,7 +2,6 @@ import java.util.Map;
 
 /**
  * Created by user on 20/04/2016.
- */
 public class Sin extends BaseExpression implements Expression {
 
     public Sin (Expression e){
@@ -41,3 +40,4 @@ public class Sin extends BaseExpression implements Expression {
         return new Sin(e.assign(var, expression));
     }
 }
+ */

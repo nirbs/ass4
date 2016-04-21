@@ -2,7 +2,7 @@ import java.util.Map;
 
 /**
  * Created by user on 20/04/2016.
- */
+
 public class Cos extends BaseExpression implements Expression {
 
     public Cos (Expression e){
@@ -41,4 +41,6 @@ public class Cos extends BaseExpression implements Expression {
         }
         return new Cos(e1.assign(var, expression));
     }
+
 }
+ */

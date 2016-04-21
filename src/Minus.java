@@ -40,9 +40,7 @@ public class Minus extends BinaryExpression implements Expression {
         if (var.equals(this.toString())) {
             return expression;
         }
-        else if ( (Expression) this instanceof Var) {
-            return (Expression) this;
-        }
+
         return new Minus(e1.assign(var, expression), e2.assign(var,expression));
     }
 

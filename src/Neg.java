@@ -2,7 +2,6 @@ import java.util.Map;
 
 /**
  * Created by user on 20/04/2016.
- */
 public class Neg extends BaseExpression implements Expression {
 
     public Neg (Expression e){
@@ -42,3 +41,4 @@ public class Neg extends BaseExpression implements Expression {
     }
 
 }
+ */
