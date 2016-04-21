@@ -12,21 +12,5 @@ public abstract class BaseExpression {
         this.e1 = e;
     }
 
-    public List<String> getVariables(){
-        List newList = new ArrayList<String>();
-        if ( (Expression) this instanceof Var) {
-            return this.getVariables();
-        }
-        if ((Expression) this instanceof Num){
-            return this.getVariables();
-        }
-        newList.addAll(e1.getVariables());
-        return newList;
-    }
-
-
-
-
-
 
 }

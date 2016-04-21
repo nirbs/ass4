@@ -3,7 +3,7 @@ import java.util.Map;
 /**
  * Created by user on 13/04/2016.
  */
-public class Log extends BaseExpression implements Expression{
+public class Log extends BinaryExpression implements Expression{
 
     public Log (Expression e1, Expression e2){
         super(e1, e2);

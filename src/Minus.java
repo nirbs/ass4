@@ -4,7 +4,7 @@ import java.util.Map;
 /**
  * Created by user on 13/04/2016.
  */
-public class Minus extends BaseExpression implements Expression {
+public class Minus extends BinaryExpression implements Expression {
 
     public Minus (Expression e1, Expression e2){
         super(e1, e2);

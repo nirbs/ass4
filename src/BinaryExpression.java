@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Matan on 20/04/2016.
  */
@@ -8,5 +11,10 @@ public abstract class BinaryExpression extends BaseExpression {
         this.e2 = e2;
     }
 
-
+    public List<String> getVariables(){
+        List newList = new ArrayList<String>();
+        newList.addAll(e1.getVariables());
+        newList.addAll(e2.getVariables());
+        return newList;
+    }
 }
