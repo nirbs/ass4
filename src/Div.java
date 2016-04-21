@@ -3,10 +3,14 @@ import java.util.Map;
 /**
  * Created by user on 13/04/2016.
  */
-public class Div extends BaseExpression implements Expression {
+public class Div extends BinaryExpression implements Expression {
 
     public Div (Expression e1, Expression e2){
         super(e1, e2);
+    }
+
+    public Div (String v, double n){
+        super ((new Var(v)), new Num (n));
     }
 
     public double evaluate(Map<String, Double> assignment) throws Exception{

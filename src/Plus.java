@@ -11,6 +11,10 @@ public class Plus extends BinaryExpression implements Expression {
         super(e1, e2);
     }
 
+     public Plus (String v, double n){
+         super ((new Var(v)), new Num (n));
+     }
+
 
     public double evaluate(Map<String, Double> assignment) throws Exception{
         try {

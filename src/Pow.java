@@ -4,12 +4,15 @@ import java.util.Map;
  * Created by user on 13/04/2016.
  */
 
-public class Pow extends BaseExpression implements Expression {
+public class Pow extends BinaryExpression implements Expression {
 
     public Pow (Expression e1, Expression e2){
         super(e1, e2);
     }
 
+    public Pow (String v, double n){
+        super ((new Var(v)), new Num(n));
+    }
 
     public double evaluate(Map<String, Double> assignment) throws Exception{
         try {

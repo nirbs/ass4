@@ -3,10 +3,14 @@ import java.util.Map;
 /**
  * Created by user on 13/04/2016.
  */
-public class Mult extends BaseExpression implements Expression {
+public class Mult extends BinaryExpression implements Expression {
 
     public Mult (Expression e1, Expression e2){
         super(e1, e2);
+    }
+
+    public Mult (String v, double n){
+        super ((new Var(v)), new Num (n));
     }
 
     public double evaluate(Map<String, Double> assignment) throws Exception{

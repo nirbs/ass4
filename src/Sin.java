@@ -9,7 +9,6 @@ public class Sin extends BaseExpression implements Expression {
         super(e);
     }
 
-
     public double evaluate(Map<String, Double> assignment) throws Exception{
         try {
             return Math.sin (e.evaluate(assignment));

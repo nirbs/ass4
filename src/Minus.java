@@ -4,12 +4,15 @@ import java.util.Map;
 /**
  * Created by user on 13/04/2016.
  */
-public class Minus extends BaseExpression implements Expression {
+public class Minus extends BinaryExpression implements Expression {
 
     public Minus (Expression e1, Expression e2){
         super(e1, e2);
     }
 
+    public Minus (String v, double n){
+        super ((new Var(v)), new Num (n));
+    }
 
     public double evaluate(Map<String, Double> assignment) throws Exception{
         try {
