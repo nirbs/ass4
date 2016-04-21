@@ -12,7 +12,7 @@ public class Neg extends BaseExpression implements Expression {
 
     public double evaluate(Map<String, Double> assignment) throws Exception{
         try {
-            return e.evaluate(assignment)*(-1);
+            return e1.evaluate(assignment)*(-1);
         } catch(Exception e) {
             System.out.println("No such expression!");
             throw e;
@@ -21,7 +21,7 @@ public class Neg extends BaseExpression implements Expression {
 
     public double evaluate() throws Exception{
         try {
-            return e.evaluate()*(-1);
+            return e1.evaluate()*(-1);
         } catch(Exception e) {
             System.out.println("No such expression!");
             throw e;
@@ -29,7 +29,7 @@ public class Neg extends BaseExpression implements Expression {
     }
 
     public String toString(){
-        return "(" + "-" + e.toString() + ")";
+        return "(" + "-" + e1.toString() + ")";
     }
 
     public Expression assign(String var, Expression expression){
@@ -39,7 +39,6 @@ public class Neg extends BaseExpression implements Expression {
         else if ( (Expression) this instanceof Var) {
             return (Expression) this;
         }
-        return new Neg(e.assign(var, expression));
     }
 
 }
