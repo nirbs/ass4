@@ -11,9 +11,29 @@ public class Plus extends BinaryExpression implements Expression {
         super(e1, e2);
     }
 
-     public Plus (String v, double n){
-         super ((new Var(v)), new Num (n));
-     }
+    public Plus (Expression e, double n){
+        super (e, new Num (n));
+    }
+
+    public Plus (Expression e, String s){
+        super (e, new Var (s));
+    }
+
+    public Plus (double n, Expression e){
+        super (e, new Num (n));
+    }
+
+    public Plus (String s, Expression e){
+        super (e, new Var (s));
+    }
+
+    public Plus (String v, double n){
+        super ((new Var(v)), new Num (n));
+    }
+
+    public Plus (double n, String v){
+        super ((new Var(v)), new Num (n));
+    }
 
     public Plus (String s1, String s2){
         super ((new Var(s1)), new Var (s2));

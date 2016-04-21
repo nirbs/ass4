@@ -9,7 +9,27 @@ public class Log extends BinaryExpression implements Expression{
         super(e1, e2);
     }
 
+    public Log (Expression e, double n){
+        super (e, new Num (n));
+    }
+
+    public Log (Expression e, String s){
+        super (e, new Var (s));
+    }
+
+    public Log (double n, Expression e){
+        super (e, new Num (n));
+    }
+
+    public Log (String s, Expression e){
+        super (e, new Var (s));
+    }
+
     public Log (String v, double n){
+        super ((new Var(v)), new Num (n));
+    }
+
+    public Log (double n, String v){
         super ((new Var(v)), new Num (n));
     }
 

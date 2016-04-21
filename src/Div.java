@@ -9,7 +9,27 @@ public class Div extends BinaryExpression implements Expression {
         super(e1, e2);
     }
 
+    public Div (Expression e, double n){
+        super (e, new Num (n));
+    }
+
+    public Div (Expression e, String s){
+        super (e, new Var (s));
+    }
+
+    public Div (double n, Expression e){
+        super (e, new Num (n));
+    }
+
+    public Div (String s, Expression e){
+        super (e, new Var (s));
+    }
+
     public Div (String v, double n){
+        super ((new Var(v)), new Num (n));
+    }
+
+    public Div (double n, String v){
         super ((new Var(v)), new Num (n));
     }
 

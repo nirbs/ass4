@@ -10,8 +10,28 @@ public class Pow extends BinaryExpression implements Expression {
         super(e1, e2);
     }
 
+    public Pow (Expression e, double n){
+        super (e, new Num (n));
+    }
+
+    public Pow (Expression e, String s){
+        super (e, new Var (s));
+    }
+
+    public Pow (double n, Expression e){
+        super (e, new Num (n));
+    }
+
+    public Pow (String s, Expression e){
+        super (e, new Var (s));
+    }
+
     public Pow (String v, double n){
-        super ((new Var(v)), new Num(n));
+        super ((new Var(v)), new Num (n));
+    }
+
+    public Pow (double n, String v){
+        super ((new Var(v)), new Num (n));
     }
 
     public Pow (String s1, String s2){

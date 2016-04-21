@@ -10,7 +10,27 @@ public class Minus extends BinaryExpression implements Expression {
         super(e1, e2);
     }
 
+    public Minus (Expression e, double n){
+        super (e, new Num (n));
+    }
+
+    public Minus (Expression e, String s){
+        super (e, new Var (s));
+    }
+
+    public Minus (double n, Expression e){
+        super (e, new Num (n));
+    }
+
+    public Minus (String s, Expression e){
+        super (e, new Var (s));
+    }
+
     public Minus (String v, double n){
+        super ((new Var(v)), new Num (n));
+    }
+
+    public Minus (double n, String v){
         super ((new Var(v)), new Num (n));
     }
 

@@ -9,7 +9,27 @@ public class Mult extends BinaryExpression implements Expression {
         super(e1, e2);
     }
 
+    public Mult (Expression e, double n){
+        super (e, new Num (n));
+    }
+
+    public Mult (Expression e, String s){
+        super (e, new Var (s));
+    }
+
+    public Mult (double n, Expression e){
+        super (e, new Num (n));
+    }
+
+    public Mult (String s, Expression e){
+        super (e, new Var (s));
+    }
+
     public Mult (String v, double n){
+        super ((new Var(v)), new Num (n));
+    }
+
+    public Mult (double n, String v){
         super ((new Var(v)), new Num (n));
     }
 
