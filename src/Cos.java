@@ -90,5 +90,10 @@ public class Cos extends UnaryExpression implements Expression {
         return new Neg(new Mult(e1.differentiate(var),new Sin(e1)));
     }
 
+    @Override
+    public Expression simplify() {
+        return null;
+    }
+
 }
 

@@ -47,4 +47,9 @@ public class Const implements Expression {
     public Expression differentiate(String var) {
         return null;
     }
+
+    @Override
+    public Expression simplify() {
+        return null;
+    }
 }

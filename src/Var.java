@@ -80,4 +80,8 @@ public class Var implements Expression{
         return new Num(0);
     }
 
+    public Expression simplify() {
+        return this;
+    }
+
 }

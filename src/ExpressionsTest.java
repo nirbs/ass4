@@ -69,9 +69,10 @@ public class ExpressionsTest {
         Expression dPow = pow.differentiate("y");
         System.out.println(dPow);
 
-        Expression mult = new Mult(3,"x");
-        Expression dx = mult.differentiate("y");
+        Expression mult = new Mult(1,"x");
+        Expression dx = mult.differentiate("x");
         System.out.println(dx);
+        System.out.println(dx.simplify());
 
         Expression div = new Div(1,"x");
         Expression divX = div.differentiate("y");
@@ -102,6 +103,9 @@ public class ExpressionsTest {
         System.out.println(cosX);
         System.out.println(sinX);
         System.out.println(negX);
+
+        Expression exp = new Mult(new Mult(1,"x"),new Mult(0,"x"));
+        System.out.println(exp.simplify());
 
 
 

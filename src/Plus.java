@@ -139,4 +139,15 @@ public class Plus extends BinaryExpression implements Expression {
     public Expression differentiate(String var) {
         return new Plus(e1.differentiate(var), e2.differentiate(var));
     }
+
+    @Override
+    public Expression simplify() {
+        if (e1.toString().equals("0.0")) {
+            return e2;
+        }
+        if (e2.toString().equals("0.0")) {
+            return e1;
+        }
+        return new Plus(e1.simplify(), e2.simplify());
+    }
 }

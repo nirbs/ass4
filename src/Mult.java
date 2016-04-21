@@ -135,8 +135,58 @@ public class Mult extends BinaryExpression implements Expression {
         return new Mult(e1.assign(var, expression), e2.assign(var,expression));
     }
 
-    @Override
     public Expression differentiate(String var) {
         return new Plus(new Mult(e1.differentiate(var),e2),new Mult(e1,e2.differentiate(var)));
+    }
+
+    public Expression simplify() {
+        if (e1.getVariables().isEmpty()) {
+            try {
+                double res1 = e1.evaluate();
+                if (res1 == 1) {
+                    return e2.simplify();
+                } else if (res1 == 0) {
+                    return new Num(0);
+                }
+                return new Mult()
+            } catch (Exception e) {
+            }
+        }
+
+            double res = e1.evaluate();
+
+        } catch (Exception e) {
+            Expression exp = e1.simplify();
+
+            try {
+                if (e2.evaluate() == 1) {
+                    return e1.simplify();
+                }
+                else if (e2.evaluate() == 0) {
+                    return new Num(0);
+                }
+            } catch (Exception ex) {
+                return new Mult(e1.simplify(), e2.simplify());
+            }
+        }
+        try {
+            if (e2.evaluate() == 1) {
+                return e1;
+            }
+            else if (e2.evaluate() == 0) {
+                return new Num(0);
+            }
+        } catch (Exception e) {
+            try {
+                if (e1.evaluate() == 1) {
+                    return e2;
+                } else if (e1.evaluate() == 0) {
+                    return new Num(0);
+                }
+            } catch (Exception ex) {
+                return new Mult(e1.simplify(), e2.simplify());
+            }
+        }
+        return this;
     }
 }

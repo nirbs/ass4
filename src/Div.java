@@ -139,4 +139,9 @@ public class Div extends BinaryExpression implements Expression {
         return new Neg(new Div(e2.differentiate(var),new Pow(e2,2)));
     }
 
+    @Override
+    public Expression simplify() {
+        return null;
+    }
+
 }

@@ -90,4 +90,9 @@ public class Neg extends UnaryExpression implements Expression {
         return new Mult(-1,e1.differentiate(var));
     }
 
+    @Override
+    public Expression simplify() {
+        return null;
+    }
+
 }

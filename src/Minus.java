@@ -135,4 +135,9 @@ public class Minus extends BinaryExpression implements Expression {
 
     }
 
+    @Override
+    public Expression simplify() {
+        return null;
+    }
+
 }

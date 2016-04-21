@@ -139,12 +139,17 @@ public class Pow extends BinaryExpression implements Expression {
         try {
             return new Mult(this,
                     new Plus(new Mult(e1.differentiate(var),
-                            new Div(e2.evaluate(), new Var(var))),new Mult(e2.differentiate(var),
-                            new Log(new Const("e", 2.71828), new Var(var)))));
+                            new Div(e2.evaluate(), e1)),new Mult(e2.differentiate(var),
+                            new Log(new Const("e", 2.71828), e1))));
         } catch (Exception e) {
             System.out.println("cannot evaluate!");
             return null;
         }
+    }
+
+    @Override
+    public Expression simplify() {
+        return null;
     }
 
 }
