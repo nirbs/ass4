@@ -56,7 +56,12 @@ public class ExpressionsTest {
         }
         reverseTest();
         Expression e9 = new Log("v","w");
+
         System.out.println(e9);
+        List<String> logVars = e9.getVariables();
+        for (String v : logVars) {
+            System.out.println(v);
+        }
         urineTest();
     }
 

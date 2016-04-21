@@ -20,14 +20,4 @@ public abstract class UnaryExpression extends BaseExpression {
         super (e1);
     }
 
-    /**
-     * getVariables creates and returns a list with all of the
-     * variables in the expression.
-     * @return a list with the variables in the expression.
-     */
-    public List<String> getVariables(){
-        List newList = new ArrayList<String>();
-        newList.addAll(e1.getVariables());
-        return newList;
-    }
 }

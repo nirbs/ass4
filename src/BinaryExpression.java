@@ -28,9 +28,8 @@ public abstract class BinaryExpression extends BaseExpression {
      * variables in every expression.
      * @return a list with the variables in the 2 expressions.
      */
-    public List<String> getVariables(){
-        List newList = new ArrayList<String>();
-        newList.addAll(e1.getVariables());
+    public List<String> getVariables() {
+        List newList = super.getVariables();
         newList.addAll(e2.getVariables());
         return newList;
     }

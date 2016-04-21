@@ -19,4 +19,15 @@ public abstract class BaseExpression {
     public BaseExpression (Expression e){
         this.e1 = e;
     }
+
+    /**
+     * getVariables creates and returns a list with all of the
+     * variables in every expression.
+     * @return a list with the variables in the 2 expressions.
+     */
+    public List<String> getVariables() {
+        List newList = new ArrayList<String>();
+        newList.addAll(e1.getVariables());
+        return newList;
+    }
 }
