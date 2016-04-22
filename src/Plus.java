@@ -13,7 +13,7 @@ public class Plus extends BinaryExpression implements Expression {
      * @param e2 the second Expression
      */
     public Plus (Expression e1, Expression e2){
-        super(e1, e2, "+");
+        super(e1, e2);
     }
 
     /**
@@ -22,7 +22,7 @@ public class Plus extends BinaryExpression implements Expression {
      * @param n the value of the second Expression which will be a Num Expression.
      */
     public Plus (Expression e, double n){
-        super (e, new Num (n), "+");
+        super (e, new Num (n));
     }
 
     /**
@@ -31,7 +31,7 @@ public class Plus extends BinaryExpression implements Expression {
      * @param s the name of the var of the second Expression which will be a Var Expression
      */
     public Plus (Expression e, String s){
-        super (e, new Var (s), "+");
+        super (e, new Var (s));
     }
 
     /**
@@ -40,7 +40,7 @@ public class Plus extends BinaryExpression implements Expression {
      * @param e the second Expression.
      */
     public Plus (double n, Expression e){
-        super (new Num (n),e, "+");
+        super (new Num (n),e);
     }
 
     /**
@@ -49,7 +49,7 @@ public class Plus extends BinaryExpression implements Expression {
      * @param e the second Expression
      */
     public Plus (String s, Expression e){
-        super (new Var (s), e, "+");
+        super (new Var (s), e);
     }
 
     /**
@@ -58,7 +58,7 @@ public class Plus extends BinaryExpression implements Expression {
      * @param n the value of the second Expression which will be a Num Expression.
      */
     public Plus (String v, double n){
-        super ((new Var(v)), new Num (n), "+");
+        super ((new Var(v)), new Num (n));
     }
 
     /**
@@ -67,7 +67,7 @@ public class Plus extends BinaryExpression implements Expression {
      * @param v the name of the var of the first Expression which will be a Var Expression
      */
     public Plus (double n, String v){
-        super (new Num (n), (new Var(v)), "+");
+        super (new Num (n), (new Var(v)));
     }
 
     /**
@@ -76,7 +76,7 @@ public class Plus extends BinaryExpression implements Expression {
      * @param s2 the name of the var of the second Expression which will be a Var Expression
      */
     public Plus (String s1, String s2){
-        super ((new Var(s1)), new Var (s2), "+");
+        super ((new Var(s1)), new Var (s2));
     }
 
     /**
@@ -85,7 +85,36 @@ public class Plus extends BinaryExpression implements Expression {
      * @param n2 the value of the second Expression which will be a Num Expression.
      */
     public Plus (double n1, double n2){
-        super ((new Num(n1)), new Num (n2), "+");
+        super ((new Num(n1)), new Num (n2));
+    }
+
+    /**
+     * evaluate Method adds the two expression according to the map it gets.
+     * @param assignment the map for the values of the variables.
+     * @return the result of the addition between the two Expression.
+     * @throws Exception in case an invalid Expression was received.
+     */
+    public double evaluate(Map<String, Double> assignment) throws Exception{
+        try {
+            return e1.evaluate(assignment) + e2.evaluate(assignment);
+        } catch(Exception e) {
+            System.out.println("No such expression!");
+            throw e;
+        }
+    }
+
+    /**
+     * evaluate Method adds the two expression.
+     * @return the result of the addition between the two Expression.
+     * @throws Exception in case an invalid Expression was received.
+     */
+    public double evaluate() throws Exception{
+        try {
+            return e1.evaluate() + e2.evaluate();
+        } catch(Exception e) {
+            System.out.println("No such expression!");
+            throw e;
+        }
     }
 
     /**
@@ -115,20 +144,13 @@ public class Plus extends BinaryExpression implements Expression {
     public Expression simplify() {
         Expression exp1 = e1.simplify();
         Expression exp2 = e2.simplify();
-        if (exp1.getVariables().isEmpty() && exp2.getVariables().isEmpty()) {
-            try{
-                return new Num(evaluate());
-            } catch(Exception e) {
-
-            }
-        }
         if (exp1.getVariables().isEmpty()) {
             try {
                 double res = exp1.evaluate();
                 if (res == 0) {
                     return exp2.simplify();
                 }
-                return new Plus(new Num(res), exp2);
+                return new Plus(new Num(res), exp2.simplify());
             } catch (Exception e) {
             }
         }

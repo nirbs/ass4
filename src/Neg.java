@@ -15,7 +15,7 @@ public class Neg extends UnaryExpression implements Expression {
      * @param e is an expression given by the user.
      */
     public Neg (Expression e){
-        super(e, "neg");
+        super(e);
     }
 
     /**
@@ -24,7 +24,7 @@ public class Neg extends UnaryExpression implements Expression {
      * @param s is a string given by the user.
      */
     public Neg (String s){
-        super (new Var(s), "neg");
+        super (new Var(s));
     }
 
     /**
@@ -33,7 +33,38 @@ public class Neg extends UnaryExpression implements Expression {
      * @param n is a double variable given by the user.
      */
     public Neg (double n){
-        super (new Num (n), "neg");
+        super (new Num (n));
+    }
+
+    /**
+     * Evaluate is in charge of evaluating the negative of
+     * the expression by a map variable given by the user
+     * @param assignment is a map that holds a variable and its value
+     * @return the negative of the expression
+     * @throws Exception in case the expression does'nt exist
+     */
+    public double evaluate(Map<String, Double> assignment) throws Exception{
+        try {
+            return e1.evaluate(assignment)*(-1);
+        } catch(Exception e) {
+            System.out.println("No such expression!");
+            throw e;
+        }
+    }
+
+    /**
+     * Evaluate is in charge of evaluating the negative of
+     * the expression
+     * @return the negative of the expression
+     * @throws Exception in case the expression does'nt exist
+     */
+    public double evaluate() throws Exception{
+        try {
+            return e1.evaluate()*(-1);
+        } catch(Exception e) {
+            System.out.println("No such expression!");
+            throw e;
+        }
     }
 
     /**

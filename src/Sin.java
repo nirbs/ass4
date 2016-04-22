@@ -15,7 +15,7 @@ public class Sin extends UnaryExpression implements Expression {
      * @param e is an expression given by the user.
      */
     public Sin (Expression e){
-        super(e, "sin");
+        super(e);
     }
 
     /**
@@ -24,7 +24,7 @@ public class Sin extends UnaryExpression implements Expression {
      * @param s is a string given by the user.
      */
     public Sin (String s){
-        super (new Var(s), "sin");
+        super (new Var(s));
     }
 
     /**
@@ -33,7 +33,38 @@ public class Sin extends UnaryExpression implements Expression {
      * @param n is a double variable given by the user.
      */
     public Sin (double n){
-        super (new Num (n), "sin");
+        super (new Num (n));
+    }
+
+    /**
+     * Evaluate is in charge of evaluating the sine of
+     * the expression by a map variable given by the user
+     * @param assignment is a map that holds a variable and its value
+     * @return the sine of the expression
+     * @throws Exception in case the expression does'nt exist
+     */
+    public double evaluate(Map<String, Double> assignment) throws Exception{
+        try {
+            return Math.sin (e1.evaluate(assignment));
+        } catch(Exception e) {
+            System.out.println("No such expression!");
+            throw e;
+        }
+    }
+
+    /**
+     * Evaluate is in charge of evaluating the sine of
+     * the expression
+     * @return the sine of the expression
+     * @throws Exception in case the expression does'nt exist
+     */
+    public double evaluate() throws Exception{
+        try {
+            return Math.sin (e1.evaluate());
+        } catch(Exception e) {
+            System.out.println("No such expression!");
+            throw e;
+        }
     }
 
     /**
@@ -61,7 +92,14 @@ public class Sin extends UnaryExpression implements Expression {
 
     @Override
     public Expression simplify() {
-        Expression exp = super.simplify();
+        Expression exp = e1.simplify();
+        if (exp.getVariables().isEmpty()) {
+            try {
+                new Num(exp.evaluate());
+            } catch(Exception e) {
+
+            }
+        }
         return new Sin(exp);
     }
 }
