@@ -149,9 +149,12 @@ public class Minus extends BinaryExpression implements Expression {
                     if (exp1.toString().equals(exp2.toString())) {
                         return new Num(0);
                     }
-                    return new Neg(exp2.simplify());
+                    return new Neg(exp2);
                 }
-                return new Minus(new Num(res), exp2.simplify());
+                if (exp1.toString().equals(exp2.toString())) {
+                    return new Num(0);
+                }
+                return new Minus(new Num(res), exp2);
             } catch (Exception e) {
             }
         }
@@ -159,12 +162,12 @@ public class Minus extends BinaryExpression implements Expression {
             try {
                 double res = exp2.evaluate();
                 if (res == 0) {
-                    return exp1.simplify();
+                    return exp1;
                 }
                 if (exp1.toString().equals(exp2.toString())) {
                     return new Num(0);
                 }
-                return new Minus(new Num(res), exp1.simplify());
+                return new Minus(new Num(res), exp1);
             } catch (Exception e) {
             }
         if (exp1.toString().equals(exp2.toString())) {

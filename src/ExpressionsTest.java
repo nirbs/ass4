@@ -66,7 +66,7 @@ public class ExpressionsTest {
 
 
         Expression pow = new Pow("x", 4);
-        Expression dPow = pow.differentiate("y");
+        Expression dPow = pow.differentiate("x");
         System.out.println(dPow);
 
         Expression mult = new Mult(1,"x");
@@ -105,6 +105,7 @@ public class ExpressionsTest {
         System.out.println(negX);
 
         Expression exp = new Mult(new Mult(1,"x"),new Mult(0,"x"));
+        System.out.println("From here");
         System.out.println(exp.simplify());
 
         System.out.println(plusX.simplify());
@@ -125,13 +126,18 @@ public class ExpressionsTest {
 
         Expression minusDiv = new Minus(5,5);
 
+        Expression logDiv = new Log("x","x");
+        Expression logNum = new Log(65,65);
+
+
         System.out.println(divAKamchan.simplify());
         System.out.println(divNigmar.simplify());
         System.out.println(divYYYY.simplify());
         System.out.println(divY1.simplify());
         System.out.println(minusDiv.simplify());
-
-
+        System.out.println(dPow.simplify());
+        System.out.println(logDiv.simplify());
+        System.out.println(logNum.simplify());
 
     }
 

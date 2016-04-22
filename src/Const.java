@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -35,21 +36,27 @@ public class Const implements Expression {
 
     @Override
     public List<String> getVariables() {
-        return null;
+        List l = new ArrayList<String>();
+        return l;
     }
 
-    @Override
+    /**
+     * assign Method returns this Num because Num is not a variable so we cant assign it.
+     * @param var the name of the var we want to replace.
+     * @param expression the Expression we want to replace the Var with.
+     * @return This num.
+     */
     public Expression assign(String var, Expression expression) {
-        return null;
+        return this;
     }
 
     @Override
     public Expression differentiate(String var) {
-        return null;
+        return new Num(0);
     }
 
     @Override
     public Expression simplify() {
-        return null;
+        return this;
     }
 }

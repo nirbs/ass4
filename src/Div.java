@@ -143,30 +143,18 @@ public class Div extends BinaryExpression implements Expression {
     public Expression simplify() {
         Expression exp1 = e1.simplify();
         Expression exp2 = e2.simplify();
-        if (exp1.getVariables().isEmpty()) {
+        if (exp2.getVariables().isEmpty()) {
             try {
-                double res = exp1.evaluate();
+                double res = exp2.evaluate();
                 if (res == 1) {
-                    return exp2.simplify();
+                    return exp1;
                 }
                 if (exp1.toString().equals(exp2.toString())) {
                     return new Num(1);
                 }
-                return new Div(new Num(res), exp2.simplify());
+                return new Div(exp1,new Num(res));
             } catch (Exception e) {
             }
-        }
-        if (exp2.getVariables().isEmpty())
-                try {
-            double res = exp2.evaluate();
-            if (res == 1) {
-                return exp1.simplify();
-            }
-            if (exp1.toString().equals(exp2.toString())) {
-               return new Num(1);
-            }
-            return new Div(new Num(res), exp1.simplify());
-        } catch (Exception e) {
         }
         if (exp1.toString().equals(exp2.toString())) {
             return new Num(1);

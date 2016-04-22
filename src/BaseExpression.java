@@ -23,7 +23,7 @@ public abstract class BaseExpression {
     /**
      * getVariables creates and returns a list with all of the
      * variables in every expression.
-     * @return a list with the variables in the 2 expressions.
+     * @return a list with the variables in the expression.
      */
     public List<String> getVariables() {
         List newList = new ArrayList<String>();

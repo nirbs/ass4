@@ -144,6 +144,22 @@ public class Log extends BinaryExpression implements Expression {
 
     @Override
     public Expression simplify() {
-        return null;
+        Expression exp1 = e1.simplify();
+        Expression exp2 = e2.simplify();
+        if (exp1.getVariables().isEmpty() && exp2.getVariables().isEmpty()) {
+            try {
+                double res1 = exp1.evaluate();
+                double res2 = exp2.evaluate();
+                if (res1 == res2) {
+                    return new Num(1);
+                }
+                return new Log(new Num(res1),new Num(res2));
+            } catch (Exception e) {
+            }
+        }
+        if (exp1.toString().equals(exp2.toString())) {
+            return new Num(1);
+        }
+        return new Log(exp1,exp2);
     }
 }
