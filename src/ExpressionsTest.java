@@ -139,6 +139,15 @@ public class ExpressionsTest {
         System.out.println(logDiv.simplify());
         System.out.println(logNum.simplify());
 
+        Expression cosinus = new Cos(0);
+        Expression cosPlusinus = new Cos(new Plus(4, 5));
+
+        Expression sinus = new Sin(0);
+        Expression sinPlusinus = new Sin(new Plus(4, 5));
+        System.out.println(cosinus.simplify());
+        System.out.println(cosPlusinus.simplify());
+        System.out.println(sinus.simplify());
+        System.out.println(sinPlusinus.simplify());
     }
 
     public static void reverseTest() {

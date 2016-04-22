@@ -14,7 +14,7 @@ public class Log extends BinaryExpression implements Expression {
      * @param e2 the second Expression
      */
     public Log (Expression e1, Expression e2){
-        super(e1, e2);
+        super(e1, e2,"log");
     }
 
     /**
@@ -23,7 +23,7 @@ public class Log extends BinaryExpression implements Expression {
      * @param n the value of the second Expression which will be a Num Expression.
      */
     public Log (Expression e, double n){
-        super (e, new Num (n));
+        super (e, new Num (n),"log");
     }
 
     /**
@@ -32,7 +32,7 @@ public class Log extends BinaryExpression implements Expression {
      * @param s the name of the var of the second Expression which will be a Var Expression
      */
     public Log (Expression e, String s){
-        super (e, new Var (s));
+        super (e, new Var (s),"log");
     }
 
     /**
@@ -41,7 +41,7 @@ public class Log extends BinaryExpression implements Expression {
      * @param e the second Expression.
      */
     public Log (double n, Expression e){
-        super (new Num (n),e);
+        super (new Num (n),e,"log");
     }
 
     /**
@@ -50,7 +50,7 @@ public class Log extends BinaryExpression implements Expression {
      * @param e the second Expression
      */
     public Log (String s, Expression e){
-        super (new Var (s), e);
+        super (new Var (s), e,"log");
     }
 
     /**
@@ -59,7 +59,7 @@ public class Log extends BinaryExpression implements Expression {
      * @param n the value of the second Expression which will be a Num Expression.
      */
     public Log (String v, double n){
-        super ((new Var(v)), new Num (n));
+        super ((new Var(v)), new Num (n),"log");
     }
 
     /**
@@ -68,7 +68,7 @@ public class Log extends BinaryExpression implements Expression {
      * @param v the name of the var of the first Expression which will be a Var Expression
      */
     public Log (double n, String v){
-        super (new Num (n), (new Var(v)));
+        super (new Num (n), (new Var(v)),"log");
     }
 
     /**
@@ -77,7 +77,7 @@ public class Log extends BinaryExpression implements Expression {
      * @param s2 the name of the var of the second Expression which will be a Var Expression
      */
     public Log (String s1, String s2){
-        super ((new Var(s1)), new Var (s2));
+        super ((new Var(s1)), new Var (s2),"log");
     }
 
     /**
@@ -86,38 +86,10 @@ public class Log extends BinaryExpression implements Expression {
      * @param n2 the value of the second Expression which will be a Num Expression.
      */
     public Log (double n1, double n2){
-        super ((new Num(n1)), new Num (n2));
+        super ((new Num(n1)), new Num (n2),"log");
     }
 
-    /**
-     * evaluate Method calculates the log with base of the first Expression and the result of the second Expression
-     * according to the map it gets.
-     * @param assignment the map for the values of the variables.
-     * @return the result of the log with the base of the first expression and the result of the second Expression.
-     * @throws Exception in case an invalid Expression was received.
-     */
-    public double evaluate(Map<String, Double> assignment) throws Exception{
-        try {
-            return Math.log(e1.evaluate(assignment)) / Math.log(e2.evaluate(assignment));
-        } catch(Exception e) {
-            System.out.println("No such expression!");
-            throw e;
-        }
-    }
 
-    /**
-     * evaluate Method calculates the log with base of the first Expression and the result of the second Expression.
-     * @return the result of the log with the base of the first expression and the result of the second Expression.
-     * @throws Exception in case an invalid Expression was received.
-     */
-    public double evaluate() throws Exception{
-        try {
-            return Math.log(e1.evaluate()) / Math.log(e2.evaluate());
-        } catch(Exception e) {
-            System.out.println("No such expression!");
-            throw e;
-        }
-    }
 
     /**
      * toString method returns the Expression in string the right string format.

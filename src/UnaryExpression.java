@@ -16,8 +16,8 @@ public abstract class UnaryExpression extends BaseExpression {
      * BaseExpression methods
      * @param e1 is the expression given by the user.
      */
-    public UnaryExpression (Expression e1){
-        super (e1);
+    public UnaryExpression (Expression e1, String sign){
+        super (e1, sign);
     }
 
 }
