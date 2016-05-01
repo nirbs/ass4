@@ -104,7 +104,6 @@ public class Sin extends UnaryExpression implements Expression {
             try {
                 new Num(evaluate());
             } catch(Exception e) {
-
             }
         }
         return new Sin(e1.simplify());

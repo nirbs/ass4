@@ -162,7 +162,7 @@ public class Minus extends BinaryExpression implements Expression {
                 double res = e2.evaluate();
                 // Check if e2 equals 0.
                 if (res < 0.00001) {
-                    return e1;
+                    return e1.simplify();
                 }
                 return new Minus(e1.simplify(), res);
             }

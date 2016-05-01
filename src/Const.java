@@ -6,9 +6,14 @@ import java.util.Map;
  * Created by Matan on 21/04/2016.
  */
 public class Const implements Expression {
-    private String name;
-    private double value;
+    private String name; // The name of the const
+    private double value; // The value of the const.
 
+    /**
+     * Const constructor.
+     * @param name the name of the const.
+     * @param value the value of the const.
+     */
     public Const(String name, double value) {
         this.name = name;
         this.value = value;
