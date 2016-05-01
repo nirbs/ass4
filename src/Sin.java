@@ -1,11 +1,9 @@
 import java.util.Map;
 
 /**
- * Created by user on 20/04/2016.
- */
-
-/**
  * The Sin class is in charge of the sine calculation with the suitable methods.
+ * @author Matan Ben Noach Nir Ben Shalom.
+ * @version 1.0 1 May 2016.
  */
 public class Sin extends UnaryExpression implements Expression {
 
@@ -104,6 +102,7 @@ public class Sin extends UnaryExpression implements Expression {
             try {
                 return new Num(evaluate());
             } catch (Exception e) {
+                return null;
             }
         }
         return new Sin(super.getE1().simplify());

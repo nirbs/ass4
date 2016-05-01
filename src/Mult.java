@@ -3,7 +3,7 @@ import java.util.Map;
 /**
  * The Mult class creates a Multiply Expression between two different Expressions.
  * @author Matan Ben Noach Nir Ben Shalom
- * @version 1.0 9 April 2016
+ * @version 1.0 1 May 2016
  */
 public class Mult extends BinaryExpression implements Expression {
 
@@ -182,6 +182,7 @@ public class Mult extends BinaryExpression implements Expression {
                 return new Mult(super.getE1().simplify(), res);
             }
         } catch (Exception e) {
+            return null;
         }
         return new Mult(super.getE1().simplify(), super.getE2().simplify());
     }

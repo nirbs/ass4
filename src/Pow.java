@@ -1,9 +1,10 @@
 import java.util.Map;
 
 /**
- * Created by user on 13/04/2016.
+ * The Pow class is a pow Expression between two Expressions.
+ * @author Matan Ben Noach Nir Ben Shalom.
+ * @version 1.0 1 May 2016.
  */
-
 public class Pow extends BinaryExpression implements Expression {
 
     /**
@@ -155,6 +156,7 @@ public class Pow extends BinaryExpression implements Expression {
             try {
                 new Num(evaluate());
             } catch (Exception e) {
+                return null;
             }
         }
         return new Pow(super.getE1().simplify(), super.getE2().simplify());

@@ -1,9 +1,9 @@
 import java.util.Map;
 
 /**
- * The minus class creates a minus Expression between two different Expressions.
+ * The Minus class creates a minus Expression between two different Expressions.
  * @author Matan Ben Noach Nir Ben Shalom
- * @version 1.0 9 April 2016
+ * @version 1.0 1 May 2016
  */
 public class Minus extends BinaryExpression implements Expression {
 
@@ -167,6 +167,7 @@ public class Minus extends BinaryExpression implements Expression {
                 return new Minus(super.getE1().simplify(), res);
             }
         } catch (Exception e) {
+            return null;
         }
 
         // Check if e1 equals e2.

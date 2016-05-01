@@ -3,7 +3,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by user on 13/04/2016.
+ * The Var class is a variable Expression.
+ * @author Matan Ben Noach Nir Ben Shalom.
+ * @version 1.0 1 May 2016.
  */
 public class Var implements Expression {
     String var; // The name of the var.

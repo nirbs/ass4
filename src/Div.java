@@ -3,10 +3,9 @@ import java.util.Map;
 /**
  * The Div class creates a division Expression between two different Expressions.
  * @author Matan Ben Noach Nir Ben Shalom
- * @version 1.0 9 April 2016
+ * @version 1.0 1 May 2016
  */
 public class Div extends BinaryExpression implements Expression {
-
     /**
      * Div constructor.
      * @param e1 the first Expression.
@@ -164,6 +163,7 @@ public class Div extends BinaryExpression implements Expression {
                 return new Div(super.getE1().simplify(), res);
             }
         } catch (Exception e) {
+            return null;
 
         }
         // Check if e1 equals e2.

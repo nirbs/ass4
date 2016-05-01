@@ -4,7 +4,7 @@ import java.util.Map;
  * The Log class creates a log Expression between two different Expressions, the first Expression is the base and the
  * second is the result.
  * @author Matan Ben Noach Nir Ben Shalom
- * @version 1.0 9 April 2016
+ * @version 1.0 1 May 2016
  */
 public class Log extends BinaryExpression implements Expression {
 
@@ -157,7 +157,7 @@ public class Log extends BinaryExpression implements Expression {
             try {
                 return new Num(evaluate());
             } catch (Exception e) {
-
+                return null;
             }
         }
         // Check if the two Expression are equal.

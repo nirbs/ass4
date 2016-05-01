@@ -3,7 +3,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Matan on 21/04/2016.
+ * The Const class contains a constant variable which will have a name and a value.
+ * @author Matan Ben Noach Nir Ben Shalom
+ * @version 1.0 1 May 2016
  */
 public class Const implements Expression {
     private String name; // The name of the const

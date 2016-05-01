@@ -1,13 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * Created by user on 21/04/2016.
- */
-
-/**
- * The UnaryExpression is an abstract class the is used by every
- * unary expression. It inherits the base expression methods.
+ * The UnaryExpression is an abstract class the is used by every unary expression.
+ * It inherits the base expression methods.
+ * @author Matan Ben Noach Nir Ben Shalom.
+ * @version 1.0 1 May 2016.
  */
 public abstract class UnaryExpression extends BaseExpression {
 

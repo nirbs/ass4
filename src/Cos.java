@@ -1,14 +1,11 @@
 import java.util.Map;
 
 /**
- * Created by user on 20/04/2016.
- */
-
-/**
  * The Cos class is in charge of the cosine calculation with the suitable methods.
+ * @author Matan Ben Noach Nir Ben Shalom
+ * @version 1.0 1 May 2016
  */
 public class Cos extends UnaryExpression implements Expression {
-
     /**
      * The constructor gets an expression that inherits the
      * UnaryExpression methods.
@@ -38,10 +35,10 @@ public class Cos extends UnaryExpression implements Expression {
 
     /**
      * Evaluate is in charge of evaluating the cosine of
-     * the expression by a map variable given by the user
-     * @param assignment is a map that holds a variable and its value
-     * @return the cosine of the expression
-     * @throws Exception in case the expression does'nt exist
+     * the expression by a map variable given by the user.
+     * @param assignment is a map that holds a variable and its value.
+     * @return the cosine of the expression.
+     * @throws Exception in case the expression does'nt exist.
      */
     public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
@@ -54,9 +51,9 @@ public class Cos extends UnaryExpression implements Expression {
 
     /**
      * Evaluate is in charge of evaluating the cosine of
-     * the expression
-     * @return the cosine of the expression
-     * @throws Exception in case the expression does'nt exist
+     * the expression.
+     * @return the cosine of the expression.
+     * @throws Exception in case the expression does'nt exist.
      */
     public double evaluate() throws Exception {
         try {
@@ -77,9 +74,9 @@ public class Cos extends UnaryExpression implements Expression {
 
     /**
      * assign is in charge of replacing a variable with an expression.
-     * @param var is a given variable from the user
-     * @param expression the expression to replace the variable
-     * @return the new expression after the replacement
+     * @param var is a given variable from the user.
+     * @param expression the expression to replace the variable.
+     * @return the new expression after the replacement.
      */
     public Expression assign(String var, Expression expression) {
         return new Cos(super.getE1().assign(var, expression));
@@ -104,6 +101,7 @@ public class Cos extends UnaryExpression implements Expression {
             try {
                 return new Num(evaluate());
             } catch (Exception e) {
+                return null;
             }
         }
         return new Cos(super.getE1().simplify());

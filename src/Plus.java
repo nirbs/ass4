@@ -1,10 +1,11 @@
 import java.util.Map;
 
 /**
- * Created by user on 13/04/2016.
+ * The Plus class is a plus Expression between two Expressions.
+ * @author Matan Ben Noach Nir Ben Shalom.
+ * @version 1.0 1 May 2016.
  */
 public class Plus extends BinaryExpression implements Expression {
-
     /**
      * Plus constructor.
      * @param e1 the first Expression.
@@ -172,6 +173,7 @@ public class Plus extends BinaryExpression implements Expression {
                 return new Plus(super.getE1().simplify(), res);
             }
         } catch (Exception e) {
+            return null;
         }
         return new Plus(super.getE1().simplify(), super.getE2().simplify());
     }
