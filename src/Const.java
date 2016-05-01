@@ -14,6 +14,12 @@ public class Const implements Expression {
         this.value = value;
     }
 
+    /**
+     * evaluate Method evaluates the Expression according to the map it gets.
+     * @param assignment the map for the values of the variables.
+     * @return the result of the Expression.
+     * @throws Exception in case an invalid Expression was received.
+     */
     public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
             return assignment.get(name);
@@ -22,6 +28,11 @@ public class Const implements Expression {
         }
     }
 
+    /**
+     * evaluate Method evaluates the Expression.
+     * @return the result of the Expression.
+     * @throws Exception in case an invalid Expression was received.
+     */
     public double evaluate() throws Exception {
         try {
             return this.value;
@@ -30,11 +41,18 @@ public class Const implements Expression {
         }
     }
 
+    /**
+     * toString method returns the Expression in string the right string format.
+     * @return the right string format of the expression.
+     */
     public String toString() {
         return name;
     }
 
-    @Override
+    /**
+     * getVariables method an empty list because there is no variables in a Const Expression.
+     * @return An empty list of strings.
+     */
     public List<String> getVariables() {
         List l = new ArrayList<String>();
         return l;
@@ -50,13 +68,20 @@ public class Const implements Expression {
         return this;
     }
 
-    @Override
+    /**
+     * differentiate method returns the derivative of the expression according to the var given.
+     * @param var the var we will differentiate by.
+     * @return The derivative by var of the expression.
+     */
     public Expression differentiate(String var) {
         return new Num(0);
     }
 
-    @Override
+    /**
+     * simplify method simplifies the expression.
+     * @return A simplified version on the expression.
+     */
     public Expression simplify() {
-        return this;
+        return new Const(this.name,this.value);
     }
 }

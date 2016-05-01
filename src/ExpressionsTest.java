@@ -44,7 +44,6 @@ public class ExpressionsTest {
         try {
             System.out.println("Sum = " + e7.evaluate());
         } catch (Exception c) {
-
         }
 
         Expression e8 = new Div(e7, new Num(25));
@@ -63,7 +62,6 @@ public class ExpressionsTest {
             System.out.println(v);
         }
         urineTest();
-
 
         Expression pow = new Pow("x", 4);
         Expression dPow = pow.differentiate("x");

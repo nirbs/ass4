@@ -135,35 +135,53 @@ public class Mult extends BinaryExpression implements Expression {
         return new Mult(e1.assign(var, expression), e2.assign(var,expression));
     }
 
+    /**
+     * differentiate Method returns the derivative of the expression according to the var given.
+     * @param var the var we will differentiate by.
+     * @return The derivative by var of the expression.
+     */
     public Expression differentiate(String var) {
         return new Plus(new Mult(e1.differentiate(var),e2),new Mult(e1,e2.differentiate(var)));
     }
 
+    /**
+     * simplify method simplifies the expression.
+     * @return A simplified version on the expression.
+     */
     public Expression simplify() {
         try {
+            // Check if the expression has no variables.
             if (getVariables().isEmpty()) {
                 return new Num(evaluate());
             }
+            // Check if e1 has no variables.
             if (e1.getVariables().isEmpty()) {
                 double res = e1.evaluate();
+                // Check if e1 equals 1.
                 if (res - 1.0 < 0.00001) {
                     return e2.simplify();
-                } else if (res < 0.00001) {
+                }
+                // Check if e1 equals 0.
+                else if (res < 0.00001) {
                     return new Num(0);
                 }
                 return new Mult(new Num(res), e2.simplify());
-            } else if (e2.getVariables().isEmpty()) {
+            }
+            // Check if e2 has no variables.
+            else if (e2.getVariables().isEmpty()) {
                 double res = e2.evaluate();
+                // Check if e2 equals 1.
                 if (res - 1.0 < 0.00001) {
                     return e1.simplify();
-                } else if (res < 0.00001) {
+                }
+                // Check if e2 equals 0.
+                else if (res < 0.00001) {
                     return new Num(0);
                 }
                 return new Mult(e1.simplify(), res);
             }
         }
         catch (Exception e) {
-
         }
         return new Mult(e1.simplify(),e2.simplify());
     }

@@ -73,6 +73,11 @@ public class Var implements Expression{
         return this;
     }
 
+    /**
+     * differentiate Method returns the derivative of the expression according to the var given.
+     * @param var the var we will differentiate by.
+     * @return The derivative by var of the expression.
+     */
     public Expression differentiate(String var) {
         if (var.equals(this.toString())) {
             return new Num(1);
@@ -80,6 +85,10 @@ public class Var implements Expression{
         return new Num(0);
     }
 
+    /**
+     * simplify method simplifies the expression.
+     * @return A simplified version on the expression.
+     */
     public Expression simplify() {
         return new Var(this.var);
     }

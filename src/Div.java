@@ -135,18 +135,29 @@ public class Div extends BinaryExpression implements Expression {
         return new Div(e1.assign(var, expression), e2.assign(var,expression));
     }
 
+    /**
+     * differentiate method returns the derivative of the expression according to the var given.
+     * @param var the var we will differentiate by.
+     * @return The derivative by var of the expression.
+     */
     public Expression differentiate(String var) {
         return new Neg(new Div(e2.differentiate(var),new Pow(e2,2)));
     }
 
-    @Override
+    /**
+     * simplify method simplifies the expression.
+     * @return A simplified version on the expression.
+     */
     public Expression simplify() {
         try {
+            // Check if the Expression has no variables.
             if (getVariables().isEmpty()) {
                 return new Num(evaluate());
             }
+            // Check if e2 has no variables.
             if (e2.getVariables().isEmpty()) {
                 double res = e2.evaluate();
+                // Check if e2 equals 1.
                 if (res - 1.0 < 0.00001) {
                     return e1.simplify();
                 }
@@ -155,6 +166,7 @@ public class Div extends BinaryExpression implements Expression {
         } catch (Exception e) {
 
         }
+        // Check if e1 equals e2.
         if (e1.toString().equals(e2.toString())) {
             return new Num(1);
         }

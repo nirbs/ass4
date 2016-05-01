@@ -137,13 +137,21 @@ public class Log extends BinaryExpression implements Expression {
         return new Log(e1.assign(var, expression), e2.assign(var,expression));
     }
 
-    @Override
+    /**
+     * differentiate Method returns the derivative of the expression according to the var given.
+     * @param var the var we will differentiate by.
+     * @return The derivative by var of the expression.
+     */
     public Expression differentiate(String var) {
         return new Mult(new Div (1,(new Mult(e2,new Log (new Const("e",2.71828), e1)))), e2.differentiate(var));
     }
 
-    @Override
+    /**
+     * simplify method simplifies the expression.
+     * @return A simplified version on the expression.
+     */
     public Expression simplify() {
+        // Check if the Expression has no variables.
         if (getVariables().isEmpty()) {
             try {
                 return new Num(evaluate());
@@ -151,6 +159,7 @@ public class Log extends BinaryExpression implements Expression {
 
             }
         }
+        // Check if the two Expression are equal.
         if (e1.toString().equals(e2.toString())) {
             return new Num(1);
         }

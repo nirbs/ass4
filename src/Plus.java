@@ -136,26 +136,39 @@ public class Plus extends BinaryExpression implements Expression {
         return new Plus(e1.assign(var, expression), e2.assign(var,expression));
     }
 
-    @Override
+    /**
+     * differentiate Method returns the derivative of the expression according to the var given.
+     * @param var the var we will differentiate by.
+     * @return The derivative by var of the expression.
+     */
     public Expression differentiate(String var) {
         return new Plus(e1.differentiate(var), e2.differentiate(var));
     }
 
-    @Override
+    /**
+     * simplify method simplifies the expression.
+     * @return A simplified version on the expression.
+     */
     public Expression simplify() {
         try {
+            // Check if there are no variables in this Expression.
             if (getVariables().isEmpty()) {
+                // Return the result of the expression.
                 return new Num(evaluate());
             }
+            // Check if there are no variables in e1 Expression.
             if (e1.getVariables().isEmpty()) {
                 double res = e1.evaluate();
+                // Check if e1 equals 0.
                 if (res < 0.00001) {
                     return e2.simplify();
                 }
                 return new Plus(res, e2.simplify());
             }
+            // Check if there are no variables in e2 Expression.
             if (e2.getVariables().isEmpty()) {
                 double res = e2.evaluate();
+                // Check if e2 equals 0.
                 if (res < 0.00001) {
                     return e1.simplify();
                 }

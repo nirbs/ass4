@@ -129,26 +129,38 @@ public class Minus extends BinaryExpression implements Expression {
         return new Minus(e1.assign(var, expression), e2.assign(var,expression));
     }
 
-    @Override
+    /**
+     * differentiate Method returns the derivative of the expression according to the var given.
+     * @param var the var we will differentiate by.
+     * @return The derivative by var of the expression.
+     */
     public Expression differentiate(String var) {
         return new Minus(e1.differentiate(var), e2.differentiate(var));
-
     }
 
+    /**
+     * simplify method simplifies the expression.
+     * @return A simplified version on the expression.
+     */
     public Expression simplify() {
         try {
+            // Check if the Expression has no variables.
             if (getVariables().isEmpty()) {
                 return new Num(evaluate());
             }
+            // Check if e1 has no variables.
             if (e1.getVariables().isEmpty()) {
                 double res = e1.evaluate();
+                // Check if e1 equals 0.
                 if (res < 0.00001) {
                     return new Neg(e2.simplify());
                 }
                 return new Minus(new Num(res), e2.simplify());
             }
+            // Check if e2 has no variables.
             if (e2.getVariables().isEmpty()) {
                 double res = e2.evaluate();
+                // Check if e2 equals 0.
                 if (res < 0.00001) {
                     return e1;
                 }
@@ -158,6 +170,7 @@ public class Minus extends BinaryExpression implements Expression {
         catch (Exception e) {
         }
 
+        // Check if e1 equals e2.
         if (e1.toString().equals(e2.toString())) {
             return new Num(0);
         }

@@ -135,19 +135,22 @@ public class Pow extends BinaryExpression implements Expression {
         return new Pow(e1.assign(var, expression), e2.assign(var,expression));
     }
 
+    /**
+     * differentiate Method returns the derivative of the expression according to the var given.
+     * @param var the var we will differentiate by.
+     * @return The derivative by var of the expression.
+     */
     public Expression differentiate(String var) {
-        try {
-            return new Mult(this,
-                    new Plus(new Mult(e1.differentiate(var),
-                            new Div(e2.evaluate(), e1)),new Mult(e2.differentiate(var),
-                            new Log(new Const("e", 2.71828), e1))));
-        } catch (Exception e) {
-            System.out.println("cannot evaluate!");
-            return null;
-        }
+        return new Mult(this,
+                new Plus(new Mult(e1.differentiate(var),
+                        new Div(e2, e1)),new Mult(e2.differentiate(var),
+                        new Log(new Const("e", 2.71828), e1))));
     }
 
-    @Override
+    /**
+     * simplify method simplifies the expression.
+     * @return A simplified version on the expression.
+     */
     public Expression simplify() {
         if (getVariables().isEmpty()) {
             try {

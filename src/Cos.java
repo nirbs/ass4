@@ -85,22 +85,28 @@ public class Cos extends UnaryExpression implements Expression {
         return new Cos(e1.assign(var, expression));
     }
 
-    @Override
+    /**
+     * differentiate Method returns the derivative of the expression according to the var given.
+     * @param var the var we will differentiate by.
+     * @return The derivative by var of the expression.
+     */
     public Expression differentiate(String var) {
         return new Neg(new Mult(e1.differentiate(var),new Sin(e1)));
     }
 
-    @Override
+    /**
+     * simplify method simplifies the expression.
+     * @return A simplified version on the expression.
+     */
     public Expression simplify() {
-        Expression exp = e1.simplify();
-        if (exp.getVariables().isEmpty()) {
+        if (getVariables().isEmpty()) {
             try {
-                new Num(exp.evaluate());
+                new Num(evaluate());
             } catch(Exception e) {
 
             }
         }
-        return new Cos(exp);
+        return new Cos(e1.simplify());
     }
 
 }
