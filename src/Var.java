@@ -5,14 +5,14 @@ import java.util.Map;
 /**
  * Created by user on 13/04/2016.
  */
-public class Var implements Expression{
+public class Var implements Expression {
     String var; // The name of the var.
 
     /**
      * Var constructor.
      * @param var the name of the var.
      */
-    public Var(String var){
+    public Var(String var) {
         this.var = var;
     }
 
@@ -25,8 +25,7 @@ public class Var implements Expression{
     public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
             return assignment.get(this.var);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("No such expression!");
             throw e;
         }
@@ -36,7 +35,7 @@ public class Var implements Expression{
      * evaluate method throws an exception because we cant evaluate a variable value without a map.
      * @throws Exception in case there is no map.
      */
-    public double evaluate() throws Exception{
+    public double evaluate() throws Exception {
         throw new Exception("Cant get value without map");
     }
 
@@ -44,7 +43,7 @@ public class Var implements Expression{
      * getVariables method returns a list with one name of a Var which is this Var.
      * @return A list of strings which will include only this Var name.
      */
-    public List<String> getVariables(){
+    public List<String> getVariables() {
         List l = new ArrayList<String>();
         l.add(this.var);
         return l;
@@ -54,7 +53,7 @@ public class Var implements Expression{
      * toString method returns the Expression in string the right string format.
      * @return the right string format of the expression.
      */
-    public String toString(){
+    public String toString() {
         return this.var;
     }
 

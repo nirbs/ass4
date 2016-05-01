@@ -12,7 +12,7 @@ public class Mult extends BinaryExpression implements Expression {
      * @param e1 the first Expression.
      * @param e2 the second Expression
      */
-    public Mult (Expression e1, Expression e2){
+    public Mult(Expression e1, Expression e2) {
         super(e1, e2);
     }
 
@@ -21,8 +21,8 @@ public class Mult extends BinaryExpression implements Expression {
      * @param e the first Expression.
      * @param n the value of the second Expression which will be a Num Expression.
      */
-    public Mult (Expression e, double n){
-        super (e, new Num (n));
+    public Mult(Expression e, double n) {
+        super(e, new Num(n));
     }
 
     /**
@@ -30,8 +30,8 @@ public class Mult extends BinaryExpression implements Expression {
      * @param e the first Expression.
      * @param s the name of the var of the second Expression which will be a Var Expression
      */
-    public Mult (Expression e, String s){
-        super (e, new Var (s));
+    public Mult(Expression e, String s) {
+        super(e, new Var(s));
     }
 
     /**
@@ -39,8 +39,8 @@ public class Mult extends BinaryExpression implements Expression {
      * @param n the value of the first Expression which will be a Num Expression.
      * @param e the second Expression.
      */
-    public Mult (double n, Expression e){
-        super (new Num (n),e);
+    public Mult(double n, Expression e) {
+        super(new Num(n), e);
     }
 
     /**
@@ -48,8 +48,8 @@ public class Mult extends BinaryExpression implements Expression {
      * @param s the name of the var of the first Expression which will be a Var Expression
      * @param e the second Expression
      */
-    public Mult (String s, Expression e){
-        super (new Var (s), e);
+    public Mult(String s, Expression e) {
+        super(new Var(s), e);
     }
 
     /**
@@ -57,8 +57,8 @@ public class Mult extends BinaryExpression implements Expression {
      * @param v the name of the var of the first Expression which will be a Var Expression
      * @param n the value of the second Expression which will be a Num Expression.
      */
-    public Mult (String v, double n){
-        super ((new Var(v)), new Num (n));
+    public Mult(String v, double n) {
+        super((new Var(v)), new Num(n));
     }
 
     /**
@@ -66,8 +66,8 @@ public class Mult extends BinaryExpression implements Expression {
      * @param n the value of the second Expression which will be a Num Expression.
      * @param v the name of the var of the first Expression which will be a Var Expression
      */
-    public Mult (double n, String v){
-        super (new Num (n), (new Var(v)));
+    public Mult(double n, String v) {
+        super(new Num(n), (new Var(v)));
     }
 
     /**
@@ -75,8 +75,8 @@ public class Mult extends BinaryExpression implements Expression {
      * @param s1 the name of the var of the first Expression which will be a Var Expression
      * @param s2 the name of the var of the second Expression which will be a Var Expression
      */
-    public Mult (String s1, String s2){
-        super ((new Var(s1)), new Var (s2));
+    public Mult(String s1, String s2) {
+        super((new Var(s1)), new Var(s2));
     }
 
     /**
@@ -84,8 +84,8 @@ public class Mult extends BinaryExpression implements Expression {
      * @param n1 the value of the first Expression which will be a Num Expression.
      * @param n2 the value of the second Expression which will be a Num Expression.
      */
-    public Mult (double n1, double n2){
-        super ((new Num(n1)), new Num (n2));
+    public Mult(double n1, double n2) {
+        super((new Num(n1)), new Num(n2));
     }
 
     /**
@@ -94,10 +94,10 @@ public class Mult extends BinaryExpression implements Expression {
      * @return the result of the multiplication between the two Expression.
      * @throws Exception in case an invalid Expression was received.
      */
-    public double evaluate(Map<String, Double> assignment) throws Exception{
+    public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
-            return e1.evaluate(assignment) * e2.evaluate(assignment);
-        } catch(Exception e) {
+            return super.getE1().evaluate(assignment) * super.getE2().evaluate(assignment);
+        } catch (Exception e) {
             System.out.println("No such expression!");
             throw e;
         }
@@ -108,10 +108,10 @@ public class Mult extends BinaryExpression implements Expression {
      * @return the result of the multiplication between the two Expression.
      * @throws Exception in case an invalid Expression was received.
      */
-    public double evaluate() throws Exception{
+    public double evaluate() throws Exception {
         try {
-            return e1.evaluate() * e2.evaluate();
-        } catch(Exception e) {
+            return super.getE1().evaluate() * super.getE2().evaluate();
+        } catch (Exception e) {
             System.out.println("No such expression!");
             throw e;
         }
@@ -121,8 +121,8 @@ public class Mult extends BinaryExpression implements Expression {
      * toString method returns the Expression in string the right string format.
      * @return the right string format of the expression.
      */
-    public String toString(){
-        return "(" + e1.toString()  + "*" + e2.toString() + ")";
+    public String toString() {
+        return "(" + super.getE1().toString() + "*" + super.getE2().toString() + ")";
     }
 
     /**
@@ -132,7 +132,7 @@ public class Mult extends BinaryExpression implements Expression {
      * @return The new Expression with the Var replaced with the Expression.
      */
     public Expression assign(String var, Expression expression) {
-        return new Mult(e1.assign(var, expression), e2.assign(var,expression));
+        return new Mult(super.getE1().assign(var, expression), super.getE2().assign(var, expression));
     }
 
     /**
@@ -141,7 +141,8 @@ public class Mult extends BinaryExpression implements Expression {
      * @return The derivative by var of the expression.
      */
     public Expression differentiate(String var) {
-        return new Plus(new Mult(e1.differentiate(var),e2),new Mult(e1,e2.differentiate(var)));
+        return new Plus(new Mult(super.getE1().differentiate(var), super.getE2()),
+                new Mult(super.getE1(), super.getE2().differentiate(var)));
     }
 
     /**
@@ -155,34 +156,33 @@ public class Mult extends BinaryExpression implements Expression {
                 return new Num(evaluate());
             }
             // Check if e1 has no variables.
-            if (e1.getVariables().isEmpty()) {
-                double res = e1.evaluate();
+            if (super.getE1().getVariables().isEmpty()) {
+                double res = super.getE1().evaluate();
                 // Check if e1 equals 1.
                 if (res - 1.0 < 0.00001) {
-                    return e2.simplify();
+                    return super.getE2().simplify();
                 }
                 // Check if e1 equals 0.
                 else if (res < 0.00001) {
                     return new Num(0);
                 }
-                return new Mult(new Num(res), e2.simplify());
+                return new Mult(new Num(res), super.getE2().simplify());
             }
             // Check if e2 has no variables.
-            else if (e2.getVariables().isEmpty()) {
-                double res = e2.evaluate();
+            else if (super.getE2().getVariables().isEmpty()) {
+                double res = super.getE2().evaluate();
                 // Check if e2 equals 1.
                 if (res - 1.0 < 0.00001) {
-                    return e1.simplify();
+                    return super.getE1().simplify();
                 }
                 // Check if e2 equals 0.
                 else if (res < 0.00001) {
                     return new Num(0);
                 }
-                return new Mult(e1.simplify(), res);
+                return new Mult(super.getE1().simplify(), res);
             }
+        } catch (Exception e) {
         }
-        catch (Exception e) {
-        }
-        return new Mult(e1.simplify(),e2.simplify());
+        return new Mult(super.getE1().simplify(), super.getE2().simplify());
     }
 }

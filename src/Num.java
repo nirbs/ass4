@@ -12,7 +12,7 @@ public class Num implements Expression {
      * Num constructor.
      * @param num the value of the Num.
      */
-    public Num (double num){
+    public Num(double num) {
         this.num = num;
     }
 
@@ -33,7 +33,7 @@ public class Num implements Expression {
     public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
             return assignment.get(toString());
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("No such expression!");
             throw e;
         }
@@ -47,7 +47,7 @@ public class Num implements Expression {
     public double evaluate() throws Exception {
         try {
             return this.num;
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println("No such expression!");
             throw e;
         }

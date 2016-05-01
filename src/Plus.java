@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by user on 13/04/2016.
@@ -13,7 +10,7 @@ public class Plus extends BinaryExpression implements Expression {
      * @param e1 the first Expression.
      * @param e2 the second Expression
      */
-    public Plus (Expression e1, Expression e2){
+    public Plus(Expression e1, Expression e2) {
         super(e1, e2);
     }
 
@@ -22,8 +19,8 @@ public class Plus extends BinaryExpression implements Expression {
      * @param e the first Expression.
      * @param n the value of the second Expression which will be a Num Expression.
      */
-    public Plus (Expression e, double n){
-        super (e, new Num (n));
+    public Plus(Expression e, double n) {
+        super(e, new Num(n));
     }
 
     /**
@@ -31,8 +28,8 @@ public class Plus extends BinaryExpression implements Expression {
      * @param e the first Expression.
      * @param s the name of the var of the second Expression which will be a Var Expression
      */
-    public Plus (Expression e, String s){
-        super (e, new Var (s));
+    public Plus(Expression e, String s) {
+        super(e, new Var(s));
     }
 
     /**
@@ -40,8 +37,8 @@ public class Plus extends BinaryExpression implements Expression {
      * @param n the value of the first Expression which will be a Num Expression.
      * @param e the second Expression.
      */
-    public Plus (double n, Expression e){
-        super (new Num (n),e);
+    public Plus(double n, Expression e) {
+        super(new Num(n), e);
     }
 
     /**
@@ -49,8 +46,8 @@ public class Plus extends BinaryExpression implements Expression {
      * @param s the name of the var of the first Expression which will be a Var Expression
      * @param e the second Expression
      */
-    public Plus (String s, Expression e){
-        super (new Var (s), e);
+    public Plus(String s, Expression e) {
+        super(new Var(s), e);
     }
 
     /**
@@ -58,8 +55,8 @@ public class Plus extends BinaryExpression implements Expression {
      * @param v the name of the var of the first Expression which will be a Var Expression
      * @param n the value of the second Expression which will be a Num Expression.
      */
-    public Plus (String v, double n){
-        super ((new Var(v)), new Num (n));
+    public Plus(String v, double n) {
+        super((new Var(v)), new Num(n));
     }
 
     /**
@@ -67,8 +64,8 @@ public class Plus extends BinaryExpression implements Expression {
      * @param n the value of the second Expression which will be a Num Expression.
      * @param v the name of the var of the first Expression which will be a Var Expression
      */
-    public Plus (double n, String v){
-        super (new Num (n), (new Var(v)));
+    public Plus(double n, String v) {
+        super(new Num(n), (new Var(v)));
     }
 
     /**
@@ -76,8 +73,8 @@ public class Plus extends BinaryExpression implements Expression {
      * @param s1 the name of the var of the first Expression which will be a Var Expression
      * @param s2 the name of the var of the second Expression which will be a Var Expression
      */
-    public Plus (String s1, String s2){
-        super ((new Var(s1)), new Var (s2));
+    public Plus(String s1, String s2) {
+        super((new Var(s1)), new Var(s2));
     }
 
     /**
@@ -85,8 +82,8 @@ public class Plus extends BinaryExpression implements Expression {
      * @param n1 the value of the first Expression which will be a Num Expression.
      * @param n2 the value of the second Expression which will be a Num Expression.
      */
-    public Plus (double n1, double n2){
-        super ((new Num(n1)), new Num (n2));
+    public Plus(double n1, double n2) {
+        super((new Num(n1)), new Num(n2));
     }
 
     /**
@@ -95,10 +92,10 @@ public class Plus extends BinaryExpression implements Expression {
      * @return the result of the addition between the two Expression.
      * @throws Exception in case an invalid Expression was received.
      */
-    public double evaluate(Map<String, Double> assignment) throws Exception{
+    public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
-            return e1.evaluate(assignment) + e2.evaluate(assignment);
-        } catch(Exception e) {
+            return super.getE1().evaluate(assignment) + super.getE2().evaluate(assignment);
+        } catch (Exception e) {
             System.out.println("No such expression!");
             throw e;
         }
@@ -109,10 +106,10 @@ public class Plus extends BinaryExpression implements Expression {
      * @return the result of the addition between the two Expression.
      * @throws Exception in case an invalid Expression was received.
      */
-    public double evaluate() throws Exception{
+    public double evaluate() throws Exception {
         try {
-            return e1.evaluate() + e2.evaluate();
-        } catch(Exception e) {
+            return super.getE1().evaluate() + super.getE2().evaluate();
+        } catch (Exception e) {
             System.out.println("No such expression!");
             throw e;
         }
@@ -122,8 +119,8 @@ public class Plus extends BinaryExpression implements Expression {
      * toString method returns the Expression in string the right string format.
      * @return the right string format of the expression.
      */
-    public String toString(){
-        return "(" + e1.toString() + "+" + e2.toString() + ")";
+    public String toString() {
+        return "(" + super.getE1().toString() + "+" + super.getE2().toString() + ")";
     }
 
     /**
@@ -133,7 +130,7 @@ public class Plus extends BinaryExpression implements Expression {
      * @return The new Expression with the Var replaced with the Expression.
      */
     public Expression assign(String var, Expression expression) {
-        return new Plus(e1.assign(var, expression), e2.assign(var,expression));
+        return new Plus(super.getE1().assign(var, expression), super.getE2().assign(var, expression));
     }
 
     /**
@@ -142,7 +139,7 @@ public class Plus extends BinaryExpression implements Expression {
      * @return The derivative by var of the expression.
      */
     public Expression differentiate(String var) {
-        return new Plus(e1.differentiate(var), e2.differentiate(var));
+        return new Plus(super.getE1().differentiate(var), super.getE2().differentiate(var));
     }
 
     /**
@@ -157,24 +154,25 @@ public class Plus extends BinaryExpression implements Expression {
                 return new Num(evaluate());
             }
             // Check if there are no variables in e1 Expression.
-            if (e1.getVariables().isEmpty()) {
-                double res = e1.evaluate();
+            if (super.getE1().getVariables().isEmpty()) {
+                double res = super.getE1().evaluate();
                 // Check if e1 equals 0.
                 if (res < 0.00001) {
-                    return e2.simplify();
+                    return super.getE2().simplify();
                 }
-                return new Plus(res, e2.simplify());
+                return new Plus(res, super.getE2().simplify());
             }
             // Check if there are no variables in e2 Expression.
-            if (e2.getVariables().isEmpty()) {
-                double res = e2.evaluate();
+            if (super.getE2().getVariables().isEmpty()) {
+                double res = super.getE2().evaluate();
                 // Check if e2 equals 0.
                 if (res < 0.00001) {
-                    return e1.simplify();
+                    return super.getE1().simplify();
                 }
-                return new Plus(e1.simplify(), res);
+                return new Plus(super.getE1().simplify(), res);
             }
-        } catch (Exception e) {}
-        return new Plus(e1.simplify(), e2.simplify());
+        } catch (Exception e) {
+        }
+        return new Plus(super.getE1().simplify(), super.getE2().simplify());
     }
 }

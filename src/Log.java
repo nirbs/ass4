@@ -13,7 +13,7 @@ public class Log extends BinaryExpression implements Expression {
      * @param e1 the first Expression.
      * @param e2 the second Expression
      */
-    public Log (Expression e1, Expression e2){
+    public Log(Expression e1, Expression e2) {
         super(e1, e2);
     }
 
@@ -22,8 +22,8 @@ public class Log extends BinaryExpression implements Expression {
      * @param e the first Expression.
      * @param n the value of the second Expression which will be a Num Expression.
      */
-    public Log (Expression e, double n){
-        super (e, new Num (n));
+    public Log(Expression e, double n) {
+        super(e, new Num(n));
     }
 
     /**
@@ -31,8 +31,8 @@ public class Log extends BinaryExpression implements Expression {
      * @param e the first Expression.
      * @param s the name of the var of the second Expression which will be a Var Expression
      */
-    public Log (Expression e, String s){
-        super (e, new Var (s));
+    public Log(Expression e, String s) {
+        super(e, new Var(s));
     }
 
     /**
@@ -40,8 +40,8 @@ public class Log extends BinaryExpression implements Expression {
      * @param n the value of the first Expression which will be a Num Expression.
      * @param e the second Expression.
      */
-    public Log (double n, Expression e){
-        super (new Num (n),e);
+    public Log(double n, Expression e) {
+        super(new Num(n), e);
     }
 
     /**
@@ -49,8 +49,8 @@ public class Log extends BinaryExpression implements Expression {
      * @param s the name of the var of the first Expression which will be a Var Expression
      * @param e the second Expression
      */
-    public Log (String s, Expression e){
-        super (new Var (s), e);
+    public Log(String s, Expression e) {
+        super(new Var(s), e);
     }
 
     /**
@@ -58,8 +58,8 @@ public class Log extends BinaryExpression implements Expression {
      * @param v the name of the var of the first Expression which will be a Var Expression
      * @param n the value of the second Expression which will be a Num Expression.
      */
-    public Log (String v, double n){
-        super ((new Var(v)), new Num (n));
+    public Log(String v, double n) {
+        super((new Var(v)), new Num(n));
     }
 
     /**
@@ -67,8 +67,8 @@ public class Log extends BinaryExpression implements Expression {
      * @param n the value of the second Expression which will be a Num Expression.
      * @param v the name of the var of the first Expression which will be a Var Expression
      */
-    public Log (double n, String v){
-        super (new Num (n), (new Var(v)));
+    public Log(double n, String v) {
+        super(new Num(n), (new Var(v)));
     }
 
     /**
@@ -76,8 +76,8 @@ public class Log extends BinaryExpression implements Expression {
      * @param s1 the name of the var of the first Expression which will be a Var Expression
      * @param s2 the name of the var of the second Expression which will be a Var Expression
      */
-    public Log (String s1, String s2){
-        super ((new Var(s1)), new Var (s2));
+    public Log(String s1, String s2) {
+        super((new Var(s1)), new Var(s2));
     }
 
     /**
@@ -85,8 +85,8 @@ public class Log extends BinaryExpression implements Expression {
      * @param n1 the value of the first Expression which will be a Num Expression.
      * @param n2 the value of the second Expression which will be a Num Expression.
      */
-    public Log (double n1, double n2){
-        super ((new Num(n1)), new Num (n2));
+    public Log(double n1, double n2) {
+        super((new Num(n1)), new Num(n2));
     }
 
     /**
@@ -96,10 +96,10 @@ public class Log extends BinaryExpression implements Expression {
      * @return the result of the log with the base of the first expression and the result of the second Expression.
      * @throws Exception in case an invalid Expression was received.
      */
-    public double evaluate(Map<String, Double> assignment) throws Exception{
+    public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
-            return Math.log(e1.evaluate(assignment)) / Math.log(e2.evaluate(assignment));
-        } catch(Exception e) {
+            return Math.log(super.getE1().evaluate(assignment)) / Math.log(super.getE2().evaluate(assignment));
+        } catch (Exception e) {
             System.out.println("No such expression!");
             throw e;
         }
@@ -110,10 +110,10 @@ public class Log extends BinaryExpression implements Expression {
      * @return the result of the log with the base of the first expression and the result of the second Expression.
      * @throws Exception in case an invalid Expression was received.
      */
-    public double evaluate() throws Exception{
+    public double evaluate() throws Exception {
         try {
-            return Math.log(e1.evaluate()) / Math.log(e2.evaluate());
-        } catch(Exception e) {
+            return Math.log(super.getE1().evaluate()) / Math.log(super.getE2().evaluate());
+        } catch (Exception e) {
             System.out.println("No such expression!");
             throw e;
         }
@@ -123,8 +123,8 @@ public class Log extends BinaryExpression implements Expression {
      * toString method returns the Expression in string the right string format.
      * @return the right string format of the expression.
      */
-    public String toString(){
-        return "log(" + e1.toString() + "," + e2.toString()  + ")";
+    public String toString() {
+        return "log(" + super.getE1().toString() + "," + super.getE2().toString() + ")";
     }
 
     /**
@@ -133,8 +133,8 @@ public class Log extends BinaryExpression implements Expression {
      * @param expression the Expression we want to replace the Var with.
      * @return The new Expression with the Var replaced with the Expression.
      */
-    public Expression assign(String var, Expression expression){
-        return new Log(e1.assign(var, expression), e2.assign(var,expression));
+    public Expression assign(String var, Expression expression) {
+        return new Log(super.getE1().assign(var, expression), super.getE2().assign(var, expression));
     }
 
     /**
@@ -143,7 +143,8 @@ public class Log extends BinaryExpression implements Expression {
      * @return The derivative by var of the expression.
      */
     public Expression differentiate(String var) {
-        return new Mult(new Div (1,(new Mult(e2,new Log (new Const("e",2.71828), e1)))), e2.differentiate(var));
+        return new Mult(new Div(1, (new Mult(super.getE2(), new Log(new Const("e", 2.71828), super.getE1())))),
+                super.getE2().differentiate(var));
     }
 
     /**
@@ -160,9 +161,9 @@ public class Log extends BinaryExpression implements Expression {
             }
         }
         // Check if the two Expression are equal.
-        if (e1.toString().equals(e2.toString())) {
+        if (super.getE1().toString().equals(super.getE2().toString())) {
             return new Num(1);
         }
-        return new Log(e1.simplify(),e2.simplify());
+        return new Log(super.getE1().simplify(), super.getE2().simplify());
     }
 }

@@ -2,7 +2,7 @@ import java.util.Map;
 
 /**
  * Created by user on 20/04/2016.
-*/
+ */
 
 /**
  * The Cos class is in charge of the cosine calculation with the suitable methods.
@@ -14,7 +14,7 @@ public class Cos extends UnaryExpression implements Expression {
      * UnaryExpression methods.
      * @param e is an expression given by the user.
      */
-    public Cos (Expression e){
+    public Cos(Expression e) {
         super(e);
     }
 
@@ -23,8 +23,8 @@ public class Cos extends UnaryExpression implements Expression {
      * UnaryExpression methods.
      * @param s is a string given by the user.
      */
-    public Cos (String s){
-        super (new Var(s));
+    public Cos(String s) {
+        super(new Var(s));
     }
 
     /**
@@ -32,8 +32,8 @@ public class Cos extends UnaryExpression implements Expression {
      * UnaryExpression methods.
      * @param n is a double variable given by the user.
      */
-    public Cos (double n){
-        super (new Num (n));
+    public Cos(double n) {
+        super(new Num(n));
     }
 
     /**
@@ -43,10 +43,10 @@ public class Cos extends UnaryExpression implements Expression {
      * @return the cosine of the expression
      * @throws Exception in case the expression does'nt exist
      */
-    public double evaluate(Map<String, Double> assignment) throws Exception{
+    public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
-            return Math.cos (e1.evaluate(assignment));
-        } catch(Exception e) {
+            return Math.cos(super.getE1().evaluate(assignment));
+        } catch (Exception e) {
             System.out.println("No such expression!");
             throw e;
         }
@@ -58,10 +58,10 @@ public class Cos extends UnaryExpression implements Expression {
      * @return the cosine of the expression
      * @throws Exception in case the expression does'nt exist
      */
-    public double evaluate() throws Exception{
+    public double evaluate() throws Exception {
         try {
-            return Math.cos (e1.evaluate());
-        } catch(Exception e) {
+            return Math.cos(super.getE1().evaluate());
+        } catch (Exception e) {
             System.out.println("No such expression!");
             throw e;
         }
@@ -71,8 +71,8 @@ public class Cos extends UnaryExpression implements Expression {
      * toString returns the string representation of cosine expression.
      * @return the string representation of cosine expression.
      */
-    public String toString(){
-        return "cos(" + e1.toString() + ")";
+    public String toString() {
+        return "cos(" + super.getE1().toString() + ")";
     }
 
     /**
@@ -81,8 +81,8 @@ public class Cos extends UnaryExpression implements Expression {
      * @param expression the expression to replace the variable
      * @return the new expression after the replacement
      */
-    public Expression assign(String var, Expression expression){
-        return new Cos(e1.assign(var, expression));
+    public Expression assign(String var, Expression expression) {
+        return new Cos(super.getE1().assign(var, expression));
     }
 
     /**
@@ -91,7 +91,7 @@ public class Cos extends UnaryExpression implements Expression {
      * @return The derivative by var of the expression.
      */
     public Expression differentiate(String var) {
-        return new Neg(new Mult(e1.differentiate(var),new Sin(e1)));
+        return new Neg(new Mult(super.getE1().differentiate(var), new Sin(super.getE1())));
     }
 
     /**
@@ -102,11 +102,11 @@ public class Cos extends UnaryExpression implements Expression {
         // Check if the Expression has no variables.
         if (getVariables().isEmpty()) {
             try {
-                new Num(evaluate());
-            } catch(Exception e) {
+                return new Num(evaluate());
+            } catch (Exception e) {
             }
         }
-        return new Cos(e1.simplify());
+        return new Cos(super.getE1().simplify());
     }
 
 }

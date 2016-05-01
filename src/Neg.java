@@ -14,7 +14,7 @@ public class Neg extends UnaryExpression implements Expression {
      * UnaryExpression methods.
      * @param e is an expression given by the user.
      */
-    public Neg (Expression e){
+    public Neg(Expression e) {
         super(e);
     }
 
@@ -23,8 +23,8 @@ public class Neg extends UnaryExpression implements Expression {
      * UnaryExpression methods.
      * @param s is a string given by the user.
      */
-    public Neg (String s){
-        super (new Var(s));
+    public Neg(String s) {
+        super(new Var(s));
     }
 
     /**
@@ -32,8 +32,8 @@ public class Neg extends UnaryExpression implements Expression {
      * UnaryExpression methods.
      * @param n is a double variable given by the user.
      */
-    public Neg (double n){
-        super (new Num (n));
+    public Neg(double n) {
+        super(new Num(n));
     }
 
     /**
@@ -43,10 +43,10 @@ public class Neg extends UnaryExpression implements Expression {
      * @return the negative of the expression
      * @throws Exception in case the expression does'nt exist
      */
-    public double evaluate(Map<String, Double> assignment) throws Exception{
+    public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
-            return e1.evaluate(assignment)*(-1);
-        } catch(Exception e) {
+            return super.getE1().evaluate(assignment) * (-1);
+        } catch (Exception e) {
             System.out.println("No such expression!");
             throw e;
         }
@@ -58,10 +58,10 @@ public class Neg extends UnaryExpression implements Expression {
      * @return the negative of the expression
      * @throws Exception in case the expression does'nt exist
      */
-    public double evaluate() throws Exception{
+    public double evaluate() throws Exception {
         try {
-            return e1.evaluate()*(-1);
-        } catch(Exception e) {
+            return super.getE1().evaluate() * (-1);
+        } catch (Exception e) {
             System.out.println("No such expression!");
             throw e;
         }
@@ -71,8 +71,8 @@ public class Neg extends UnaryExpression implements Expression {
      * toString returns the string representation of negative expression.
      * @return the string representation of negative expression.
      */
-    public String toString(){
-        return "(" + "-" + e1.toString() + ")";
+    public String toString() {
+        return "(" + "-" + super.getE1().toString() + ")";
     }
 
     /**
@@ -81,8 +81,8 @@ public class Neg extends UnaryExpression implements Expression {
      * @param expression the expression to replace the variable
      * @return the new expression after the replacement
      */
-    public Expression assign(String var, Expression expression){
-        return new Neg(e1.assign(var, expression));
+    public Expression assign(String var, Expression expression) {
+        return new Neg(super.getE1().assign(var, expression));
     }
 
     /**
@@ -91,7 +91,7 @@ public class Neg extends UnaryExpression implements Expression {
      * @return The derivative by var of the expression.
      */
     public Expression differentiate(String var) {
-        return new Mult(-1,e1.differentiate(var));
+        return new Mult(-1, super.getE1().differentiate(var));
     }
 
     /**
@@ -102,11 +102,11 @@ public class Neg extends UnaryExpression implements Expression {
         // Check if the Expression has no variables.
         if (getVariables().isEmpty()) {
             try {
-                new Num(evaluate());
-            } catch(Exception e) {
+                return new Num(evaluate());
+            } catch (Exception e) {
             }
         }
-        return new Neg(e1.simplify());
+        return new Neg(super.getE1().simplify());
     }
 }
 

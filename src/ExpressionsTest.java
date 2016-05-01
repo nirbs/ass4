@@ -54,7 +54,7 @@ public class ExpressionsTest {
 
         }
         reverseTest();
-        Expression e9 = new Log("v","w");
+        Expression e9 = new Log("v", "w");
 
         System.out.println(e9);
         List<String> logVars = e9.getVariables();
@@ -67,12 +67,12 @@ public class ExpressionsTest {
         Expression dPow = pow.differentiate("x");
         System.out.println(dPow);
 
-        Expression mult = new Mult(1,"x");
+        Expression mult = new Mult(1, "x");
         Expression dx = mult.differentiate("x");
         System.out.println(dx);
         System.out.println(dx.simplify());
 
-        Expression div = new Div(1,"x");
+        Expression div = new Div(1, "x");
         Expression divX = div.differentiate("y");
 
         Expression plus = new Plus(4, "x");
@@ -102,30 +102,30 @@ public class ExpressionsTest {
         System.out.println(sinX);
         System.out.println(negX);
 
-        Expression exp = new Mult(new Mult(1,"x"),new Mult(0,"x"));
+        Expression exp = new Mult(new Mult(1, "x"), new Mult(0, "x"));
         System.out.println("From here");
         System.out.println(exp.simplify());
 
         System.out.println(plusX.simplify());
         System.out.println(minusX.simplify());
 
-        Expression xMinusX = new Minus("X","X");
+        Expression xMinusX = new Minus("X", "X");
         System.out.println(xMinusX.simplify());
 
-        Expression divAAdiv = new Div(7,7);
+        Expression divAAdiv = new Div(7, 7);
         System.out.println(divAAdiv.simplify());
 
-        Expression divAKamchan = new Div (7,1);
-        Expression divNigmar = new Div (1,7);
+        Expression divAKamchan = new Div(7, 1);
+        Expression divNigmar = new Div(1, 7);
 
-        Expression divYYYY = new Div("y","y");
+        Expression divYYYY = new Div("y", "y");
 
-        Expression divY1 = new Div("y",1);
+        Expression divY1 = new Div("y", 1);
 
-        Expression minusDiv = new Minus(5,5);
+        Expression minusDiv = new Minus(5, 5);
 
-        Expression logDiv = new Log("x","x");
-        Expression logNum = new Log(65,65);
+        Expression logDiv = new Log("x", "x");
+        Expression logNum = new Log(65, 65);
 
 
         System.out.println(divAKamchan.simplify());
@@ -171,7 +171,7 @@ public class ExpressionsTest {
         System.out.println(e4);
         Expression e6 = e3.assign("z", e4);
 
-        Expression e5 = e2.assign("x",e6);
+        Expression e5 = e2.assign("x", e6);
         System.out.println(e5);
 
         try {
@@ -216,7 +216,7 @@ public class ExpressionsTest {
         } catch (Exception c) {
 
         }
-        Expression e3 = new Plus (3,76);
+        Expression e3 = new Plus(3, 76);
         Expression e4 = e2.assign("x", e3);
         System.out.println(e4);
         try {
@@ -231,9 +231,6 @@ public class ExpressionsTest {
         } catch (Exception c) {
 
         }
-
-
-
 
 
     }

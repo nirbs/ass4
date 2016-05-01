@@ -87,6 +87,6 @@ public class Const implements Expression {
      * @return A simplified version on the expression.
      */
     public Expression simplify() {
-        return new Const(this.name,this.value);
+        return new Const(this.name, this.value);
     }
 }

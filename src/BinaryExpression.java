@@ -9,10 +9,10 @@ import java.util.List;
  * binary expression. It inherits the base expression methods.
  */
 public abstract class BinaryExpression extends BaseExpression {
-    protected Expression e2; //The member which doesn't inherit the BaseExpression methods
+    private Expression e2; //The member which doesn't inherit the BaseExpression methods
 
     /**
-     *  The constructor creates 2 expressions: The first gets the
+     * The constructor creates 2 expressions: The first gets the
      * BaseExpression methods and the second does'nt.
      * @param e1 is the expression given by the user and inherits the BaseExpression methods.
      * @param e2 is the expression given by the user and it's only a BinaryExpression member.
@@ -31,5 +31,13 @@ public abstract class BinaryExpression extends BaseExpression {
         List newList = super.getVariables();
         newList.addAll(e2.getVariables());
         return newList;
+    }
+
+    /**
+     * getE2 returns the e2 Expression.
+     * @return the e2 Expression
+     */
+    public Expression getE2() {
+        return e2;
     }
 }

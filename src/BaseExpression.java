@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Matan on 20/04/2016.
@@ -11,13 +10,13 @@ import java.util.Map;
  * BinaryExpression and the UnaryExpression classes.
  */
 public abstract class BaseExpression {
-    protected Expression e1; //The member which holds an expression
+    private Expression e1; //The member which holds an expression
 
     /**
-     *  The constructor creates an expression.
+     * The constructor creates an expression.
      * @param e is the expression given by the user.
      */
-    public BaseExpression (Expression e){
+    public BaseExpression(Expression e) {
         this.e1 = e;
     }
 
@@ -30,5 +29,13 @@ public abstract class BaseExpression {
         List newList = new ArrayList<String>();
         newList.addAll(e1.getVariables());
         return newList;
+    }
+
+    /**
+     * getE1 returns the e1 Expression.
+     * @return a the e1 Expression
+     */
+    public Expression getE1() {
+        return e1;
     }
 }

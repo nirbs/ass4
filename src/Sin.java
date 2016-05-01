@@ -14,7 +14,7 @@ public class Sin extends UnaryExpression implements Expression {
      * UnaryExpression methods.
      * @param e is an expression given by the user.
      */
-    public Sin (Expression e){
+    public Sin(Expression e) {
         super(e);
     }
 
@@ -23,8 +23,8 @@ public class Sin extends UnaryExpression implements Expression {
      * UnaryExpression methods.
      * @param s is a string given by the user.
      */
-    public Sin (String s){
-        super (new Var(s));
+    public Sin(String s) {
+        super(new Var(s));
     }
 
     /**
@@ -32,8 +32,8 @@ public class Sin extends UnaryExpression implements Expression {
      * UnaryExpression methods.
      * @param n is a double variable given by the user.
      */
-    public Sin (double n){
-        super (new Num (n));
+    public Sin(double n) {
+        super(new Num(n));
     }
 
     /**
@@ -43,10 +43,10 @@ public class Sin extends UnaryExpression implements Expression {
      * @return the sine of the expression
      * @throws Exception in case the expression does'nt exist
      */
-    public double evaluate(Map<String, Double> assignment) throws Exception{
+    public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
-            return Math.sin (e1.evaluate(assignment));
-        } catch(Exception e) {
+            return Math.sin(super.getE1().evaluate(assignment));
+        } catch (Exception e) {
             System.out.println("No such expression!");
             throw e;
         }
@@ -58,10 +58,10 @@ public class Sin extends UnaryExpression implements Expression {
      * @return the sine of the expression
      * @throws Exception in case the expression does'nt exist
      */
-    public double evaluate() throws Exception{
+    public double evaluate() throws Exception {
         try {
-            return Math.sin (e1.evaluate());
-        } catch(Exception e) {
+            return Math.sin(super.getE1().evaluate());
+        } catch (Exception e) {
             System.out.println("No such expression!");
             throw e;
         }
@@ -71,8 +71,8 @@ public class Sin extends UnaryExpression implements Expression {
      * toString returns the string representation of sine expression.
      * @return the string representation of sine expression.
      */
-    public String toString(){
-        return "(" + "sin(" + e1.toString() + "))";
+    public String toString() {
+        return "(" + "sin(" + super.getE1().toString() + "))";
     }
 
     /**
@@ -81,8 +81,8 @@ public class Sin extends UnaryExpression implements Expression {
      * @param expression the expression to replace the variable
      * @return the new expression after the replacement
      */
-    public Expression assign(String var, Expression expression){
-        return new Sin(e1.assign(var, expression));
+    public Expression assign(String var, Expression expression) {
+        return new Sin(super.getE1().assign(var, expression));
     }
 
     /**
@@ -91,7 +91,7 @@ public class Sin extends UnaryExpression implements Expression {
      * @return The derivative by var of the expression.
      */
     public Expression differentiate(String var) {
-        return new Mult (new Cos(e1),e1.differentiate(var));
+        return new Mult(new Cos(super.getE1()), super.getE1().differentiate(var));
     }
 
     /**
@@ -102,10 +102,10 @@ public class Sin extends UnaryExpression implements Expression {
         // Check if the Expression has no variables.
         if (getVariables().isEmpty()) {
             try {
-                new Num(evaluate());
-            } catch(Exception e) {
+                return new Num(evaluate());
+            } catch (Exception e) {
             }
         }
-        return new Sin(e1.simplify());
+        return new Sin(super.getE1().simplify());
     }
 }
