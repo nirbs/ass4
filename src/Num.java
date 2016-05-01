@@ -79,6 +79,6 @@ public class Num implements Expression {
     }
 
     public Expression simplify() {
-        return this;
+        return new Num(this.num);
     }
 }

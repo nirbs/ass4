@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by user on 13/04/2016.
@@ -142,27 +143,25 @@ public class Plus extends BinaryExpression implements Expression {
 
     @Override
     public Expression simplify() {
-        Expression exp1 = e1.simplify();
-        Expression exp2 = e2.simplify();
-        if (exp1.getVariables().isEmpty()) {
-            try {
-                double res = exp1.evaluate();
-                if (res == 0) {
-                    return exp2.simplify();
-                }
-                return new Plus(new Num(res), exp2.simplify());
-            } catch (Exception e) {
+        try {
+            if (getVariables().isEmpty()) {
+                return new Num(evaluate());
             }
-        }
-        if (exp2.getVariables().isEmpty())
-            try {
-                double res = exp2.evaluate();
-                if (res == 0) {
-                    return exp1.simplify();
+            if (e1.getVariables().isEmpty()) {
+                double res = e1.evaluate();
+                if (res < 0.00001) {
+                    return e2.simplify();
                 }
-                return new Plus(new Num(res), exp1.simplify());
-            } catch (Exception e) {
+                return new Plus(res, e2.simplify());
             }
-        return new Plus(exp1, exp2);
+            if (e2.getVariables().isEmpty()) {
+                double res = e2.evaluate();
+                if (res < 0.00001) {
+                    return e1.simplify();
+                }
+                return new Plus(e1.simplify(), res);
+            }
+        } catch (Exception e) {}
+        return new Plus(e1.simplify(), e2.simplify());
     }
 }

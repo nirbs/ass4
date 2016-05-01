@@ -140,31 +140,31 @@ public class Mult extends BinaryExpression implements Expression {
     }
 
     public Expression simplify() {
-        Expression exp1 = e1.simplify();
-        Expression exp2 = e2.simplify();
-        if (exp1.getVariables().isEmpty()) {
-            try {
-                double res = exp1.evaluate();
-                if (res == 1) {
-                    return exp2.simplify();
-                } else if (res == 0) {
+        try {
+            if (getVariables().isEmpty()) {
+                return new Num(evaluate());
+            }
+            if (e1.getVariables().isEmpty()) {
+                double res = e1.evaluate();
+                if (res - 1.0 < 0.00001) {
+                    return e2.simplify();
+                } else if (res < 0.00001) {
                     return new Num(0);
                 }
-                return new Mult(new Num(res), exp2.simplify());
-            } catch (Exception e) {
+                return new Mult(new Num(res), e2.simplify());
+            } else if (e2.getVariables().isEmpty()) {
+                double res = e2.evaluate();
+                if (res - 1.0 < 0.00001) {
+                    return e1.simplify();
+                } else if (res < 0.00001) {
+                    return new Num(0);
+                }
+                return new Mult(e1.simplify(), res);
             }
         }
-        if (exp2.getVariables().isEmpty())
-            try {
-                double res = exp2.evaluate();
-                if (res == 1) {
-                    return exp1.simplify();
-                } else if (res == 0) {
-                    return new Num(0);
-                }
-                return new Mult(new Num(res), exp1.simplify());
-            } catch (Exception e) {
-            }
-        return new Mult(exp1,exp2);
+        catch (Exception e) {
+
+        }
+        return new Mult(e1.simplify(),e2.simplify());
     }
 }

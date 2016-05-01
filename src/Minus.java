@@ -135,45 +135,33 @@ public class Minus extends BinaryExpression implements Expression {
 
     }
 
-
     public Expression simplify() {
-        Expression exp1 = e1.simplify();
-        Expression exp2 = e2.simplify();
-        if (exp1.getVariables().isEmpty()) {
-            try {
-                double res = exp1.evaluate();
-                if (res == 0) {
-                    if (exp2.toString().equals("0.0")) {
-                        return new Num(0);
-                    }
-                    if (exp1.toString().equals(exp2.toString())) {
-                        return new Num(0);
-                    }
-                    return new Neg(exp2);
+        try {
+            if (getVariables().isEmpty()) {
+                return new Num(evaluate());
+            }
+            if (e1.getVariables().isEmpty()) {
+                double res = e1.evaluate();
+                if (res < 0.00001) {
+                    return new Neg(e2.simplify());
                 }
-                if (exp1.toString().equals(exp2.toString())) {
-                    return new Num(0);
+                return new Minus(new Num(res), e2.simplify());
+            }
+            if (e2.getVariables().isEmpty()) {
+                double res = e2.evaluate();
+                if (res < 0.00001) {
+                    return e1;
                 }
-                return new Minus(new Num(res), exp2);
-            } catch (Exception e) {
+                return new Minus(e1.simplify(), res);
             }
         }
-        if (exp2.getVariables().isEmpty())
-            try {
-                double res = exp2.evaluate();
-                if (res == 0) {
-                    return exp1;
-                }
-                if (exp1.toString().equals(exp2.toString())) {
-                    return new Num(0);
-                }
-                return new Minus(new Num(res), exp1);
-            } catch (Exception e) {
-            }
-        if (exp1.toString().equals(exp2.toString())) {
+        catch (Exception e) {
+        }
+
+        if (e1.toString().equals(e2.toString())) {
             return new Num(0);
         }
-        return new Minus(exp1, exp2);
+        return new Minus(e1.simplify(), e2.simplify());
     }
 
 }

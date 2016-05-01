@@ -92,14 +92,13 @@ public class Sin extends UnaryExpression implements Expression {
 
     @Override
     public Expression simplify() {
-        Expression exp = e1.simplify();
-        if (exp.getVariables().isEmpty()) {
+        if (getVariables().isEmpty()) {
             try {
-                new Num(exp.evaluate());
+                new Num(evaluate());
             } catch(Exception e) {
 
             }
         }
-        return new Sin(exp);
+        return new Sin(e1.simplify());
     }
 }

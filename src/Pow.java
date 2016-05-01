@@ -149,15 +149,13 @@ public class Pow extends BinaryExpression implements Expression {
 
     @Override
     public Expression simplify() {
-        Expression exp1 = e1.simplify();
-        Expression exp2 = e2.simplify();
-        if (exp1.getVariables().isEmpty() && exp2.getVariables().isEmpty()) {
+        if (getVariables().isEmpty()) {
             try {
-                new Num(this.evaluate());
+                new Num(evaluate());
             } catch(Exception e) {
             }
         }
-        return new Pow(exp1, exp2);
+        return new Pow(e1.simplify(), e2.simplify());
     }
 
 }
