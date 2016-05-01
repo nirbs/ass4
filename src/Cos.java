@@ -99,11 +99,11 @@ public class Cos extends UnaryExpression implements Expression {
      * @return A simplified version on the expression.
      */
     public Expression simplify() {
+        // Check if the Expression has no variables.
         if (getVariables().isEmpty()) {
             try {
                 new Num(evaluate());
             } catch(Exception e) {
-
             }
         }
         return new Cos(e1.simplify());
