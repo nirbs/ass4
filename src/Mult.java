@@ -161,22 +161,17 @@ public class Mult extends BinaryExpression implements Expression {
                 // Check if e1 equals 1.
                 if (res - 1.0 < 0.00001) {
                     return super.getE2().simplify();
-                }
-                // Check if e1 equals 0.
-                else if (res < 0.00001) {
+                } else if (res < 0.00001) { // Check if e1 equals 0.
                     return new Num(0);
                 }
                 return new Mult(new Num(res), super.getE2().simplify());
-            }
-            // Check if e2 has no variables.
-            else if (super.getE2().getVariables().isEmpty()) {
+            } else if (super.getE2().getVariables().isEmpty()) { // Check if e2 has no variables.
+
                 double res = super.getE2().evaluate();
                 // Check if e2 equals 1.
                 if (res - 1.0 < 0.00001) {
                     return super.getE1().simplify();
-                }
-                // Check if e2 equals 0.
-                else if (res < 0.00001) {
+                } else if (res < 0.00001) { // Check if e2 equals 0.
                     return new Num(0);
                 }
                 return new Mult(super.getE1().simplify(), res);

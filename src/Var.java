@@ -8,7 +8,7 @@ import java.util.Map;
  * @version 1.0 1 May 2016.
  */
 public class Var implements Expression {
-    String var; // The name of the var.
+    private String var; // The name of the var.
 
     /**
      * Var constructor.
@@ -35,6 +35,7 @@ public class Var implements Expression {
 
     /**
      * evaluate method throws an exception because we cant evaluate a variable value without a map.
+     * @return nothing because we cant evaluate a variable without a map.
      * @throws Exception in case there is no map.
      */
     public double evaluate() throws Exception {
@@ -62,13 +63,13 @@ public class Var implements Expression {
     /**
      * assign Method checks if this is the Var were looking for and if so returns the Expression to replace it,
      * otherwise the method return this Var.
-     * @param var the name of the var we want to replace.
+     * @param myVar the name of the var we want to replace.
      * @param expression the Expression we want to replace the Var with.
      * @return The new Expression with the Var replaced with the Expression if this is the Var were looking for,
      * otherwise the method this Var.
      */
-    public Expression assign(String var, Expression expression) {
-        if (var.equals(this.toString())) {
+    public Expression assign(String myVar, Expression expression) {
+        if (myVar.equals(this.toString())) {
             return expression;
         }
         return this;
@@ -76,11 +77,11 @@ public class Var implements Expression {
 
     /**
      * differentiate Method returns the derivative of the expression according to the var given.
-     * @param var the var we will differentiate by.
+     * @param myVar the var we will differentiate by.
      * @return The derivative by var of the expression.
      */
-    public Expression differentiate(String var) {
-        if (var.equals(this.toString())) {
+    public Expression differentiate(String myVar) {
+        if (myVar.equals(this.toString())) {
             return new Num(1);
         }
         return new Num(0);

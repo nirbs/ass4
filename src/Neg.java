@@ -35,11 +35,10 @@ public class Neg extends UnaryExpression implements Expression {
     }
 
     /**
-     * Evaluate is in charge of evaluating the negative of
-     * the expression by a map variable given by the user
-     * @param assignment is a map that holds a variable and its value
-     * @return the negative of the expression
-     * @throws Exception in case the expression does'nt exist
+     * Evaluate is in charge of evaluating the negative of the expression by a map variable given by the user.
+     * @param assignment is a map that holds a variable and its value.
+     * @return the negative of the expression.
+     * @throws Exception in case the expression does'nt exist.
      */
     public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
@@ -51,10 +50,9 @@ public class Neg extends UnaryExpression implements Expression {
     }
 
     /**
-     * Evaluate is in charge of evaluating the negative of
-     * the expression
-     * @return the negative of the expression
-     * @throws Exception in case the expression does'nt exist
+     * Evaluate is in charge of evaluating the negative of the expression.
+     * @return the negative of the expression.
+     * @throws Exception in case the expression does'nt exist.
      */
     public double evaluate() throws Exception {
         try {
@@ -75,9 +73,9 @@ public class Neg extends UnaryExpression implements Expression {
 
     /**
      * assign is in charge of replacing a variable with an expression.
-     * @param var is a given variable from the user
-     * @param expression the expression to replace the variable
-     * @return the new expression after the replacement
+     * @param var is a given variable from the user.
+     * @param expression the expression to replace the variable.
+     * @return the new expression after the replacement.
      */
     public Expression assign(String var, Expression expression) {
         return new Neg(super.getE1().assign(var, expression));

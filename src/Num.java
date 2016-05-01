@@ -8,7 +8,7 @@ import java.util.Map;
  * @version 1.0 1 May 2016.
  */
 public class Num implements Expression {
-    double num; // The value of the Num
+    private double num; // The value of the Num
 
     /**
      * Num constructor.

@@ -88,6 +88,12 @@ public class Minus extends BinaryExpression implements Expression {
         super((new Num(n1)), new Num(n2));
     }
 
+    /**
+     * evaluate Method subtracts the two expression according to the map given.
+     * @param assignment the map for the values of the variables.
+     * @return the result of the subtraction between the two Expression.
+     * @throws Exception in case an invalid Expression was received.
+     */
     public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
             return super.getE1().evaluate(assignment) - super.getE2().evaluate(assignment);

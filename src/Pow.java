@@ -162,4 +162,5 @@ public class Pow extends BinaryExpression implements Expression {
         return new Pow(super.getE1().simplify(), super.getE2().simplify());
     }
 
+
 }

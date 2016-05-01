@@ -8,7 +8,7 @@ public abstract class UnaryExpression extends BaseExpression {
 
     /**
      * The constructor creates an expression that gets the
-     * BaseExpression methods
+     * BaseExpression methods.
      * @param e1 is the expression given by the user.
      */
     public UnaryExpression(Expression e1) {
