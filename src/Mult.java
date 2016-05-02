@@ -159,7 +159,7 @@ public class Mult extends BinaryExpression implements Expression {
             if (super.getE1().getVariables().isEmpty()) {
                 double res = super.getE1().evaluate();
                 // Check if e1 equals 1.
-                if (res - 1.0 < 0.00001) {
+                if (Math.abs(res - 1.0) < 0.00001) {
                     return super.getE2().simplify();
                 } else if (res < 0.00001) { // Check if e1 equals 0.
                     return new Num(0);
@@ -169,7 +169,7 @@ public class Mult extends BinaryExpression implements Expression {
 
                 double res = super.getE2().evaluate();
                 // Check if e2 equals 1.
-                if (res - 1.0 < 0.00001) {
+                if (Math.abs(res - 1.0) < 0.00001) {
                     return super.getE1().simplify();
                 } else if (res < 0.00001) { // Check if e2 equals 0.
                     return new Num(0);

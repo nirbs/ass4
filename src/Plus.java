@@ -148,33 +148,34 @@ public class Plus extends BinaryExpression implements Expression {
      * @return A simplified version on the expression.
      */
     public Expression simplify() {
-        try {
-            // Check if there are no variables in this Expression.
-            if (getVariables().isEmpty()) {
-                // Return the result of the expression.
-                return new Num(evaluate());
+        Expression exp1 = super.getE1().simplify();
+        Expression exp2 = super.getE2().simplify();
+        if (exp1.getVariables().isEmpty() && exp2.getVariables().isEmpty()) {
+            try {
+                return new Num(exp1.evaluate() + exp2.evaluate());
             }
-            // Check if there are no variables in e1 Expression.
-            if (super.getE1().getVariables().isEmpty()) {
-                double res = super.getE1().evaluate();
-                // Check if e1 equals 0.
-                if (res < 0.00001) {
-                    return super.getE2().simplify();
-                }
-                return new Plus(res, super.getE2().simplify());
+            catch (Exception e) {
             }
-            // Check if there are no variables in e2 Expression.
-            if (super.getE2().getVariables().isEmpty()) {
-                double res = super.getE2().evaluate();
-                // Check if e2 equals 0.
-                if (res < 0.00001) {
-                    return super.getE1().simplify();
-                }
-                return new Plus(super.getE1().simplify(), res);
-            }
-        } catch (Exception e) {
-            return null;
         }
-        return new Plus(super.getE1().simplify(), super.getE2().simplify());
+        if (exp1.getVariables().isEmpty()) {
+            try {
+                double res = exp1.evaluate();
+                if (res == 0) {
+                    return exp2;
+                }
+                return new Plus(new Num(res), exp2.simplify());
+            } catch (Exception e) {
+            }
+        }
+        if (exp2.getVariables().isEmpty())
+            try {
+                double res = exp2.evaluate();
+                if (res == 0) {
+                    return exp1;
+                }
+                return new Plus(new Num(res), exp1.simplify());
+            } catch (Exception e) {
+            }
+        return new Plus(exp1, exp2);
     }
 }

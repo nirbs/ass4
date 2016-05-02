@@ -13,10 +13,5 @@ public class SimplificationDemo {
         System.out.println(ex);
         System.out.println(ex.simplify());
         Expression multPlus = new Plus(new Mult(2,"x"),new Mult(4,"x"));
-        List<String> myList = multPlus.getVariables();
-        for (String s: myList) {
-            System.out.println(s);
-
-        }
     }
 }

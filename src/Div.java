@@ -157,7 +157,7 @@ public class Div extends BinaryExpression implements Expression {
             if (super.getE2().getVariables().isEmpty()) {
                 double res = super.getE2().evaluate();
                 // Check if e2 equals 1.
-                if (res - 1.0 < 0.00001) {
+                if (res < 1.00001) {
                     return super.getE1().simplify();
                 }
                 return new Div(super.getE1().simplify(), res);

@@ -95,15 +95,15 @@ public class Neg extends UnaryExpression implements Expression {
      * @return A simplified version on the expression.
      */
     public Expression simplify() {
-        // Check if the Expression has no variables.
-        if (getVariables().isEmpty()) {
+        Expression exp = super.getE1().simplify();
+        if (exp.getVariables().isEmpty()) {
             try {
-                return new Num(evaluate());
-            } catch (Exception e) {
-                return null;
+                new Num(exp.evaluate());
+            } catch(Exception e) {
+
             }
         }
-        return new Neg(super.getE1().simplify());
+        return new Neg(exp);
     }
 }
 

@@ -1,4 +1,3 @@
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -154,37 +153,14 @@ public class Pow extends BinaryExpression implements Expression {
      * @return A simplified version on the expression.
      */
     public Expression simplify() {
-        if (getVariables().isEmpty()) {
+        Expression exp1 = super.getE1().simplify();
+        Expression exp2 = super.getE2().simplify();
+        if (exp1.getVariables().isEmpty() && exp2.getVariables().isEmpty()) {
             try {
-                new Num(evaluate());
+                new Num(this.evaluate());
             } catch (Exception e) {
-                return null;
             }
         }
-        if (super.getE2().getVariables().isEmpty()) {
-            try {
-                double res = super.getE2().evaluate();
-                if (res < 0.00001) {
-                    return new Num(1);
-                }
-
-            } catch (Exception e) {
-                return null;
-            }
-        }
-
-        if (super.getE1() instanceof Pow) {
-            Pow firstPow = (Pow) super.getE1();
-            return new Pow(firstPow.getE1().simplify(),
-                    new Mult(firstPow.getE2().simplify(), super.getE2().simplify()));
-        }
-        return new Pow(super.getE1().simplify(), super.getE2().simplify());
+        return new Pow(exp1, exp2);
     }
-
-
-
-
-
-
-
 }

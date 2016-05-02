@@ -33,6 +33,7 @@ public abstract class BaseExpression {
                 newList.add(s);
             }
         }
+        newList.addAll(e1.getVariables());
         return newList;
     }
 
