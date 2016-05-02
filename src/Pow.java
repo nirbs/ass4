@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -147,6 +148,7 @@ public class Pow extends BinaryExpression implements Expression {
                         new Log(new Const("e", 2.71828), super.getE1()))));
     }
 
+
     /**
      * simplify method simplifies the expression.
      * @return A simplified version on the expression.
@@ -159,8 +161,30 @@ public class Pow extends BinaryExpression implements Expression {
                 return null;
             }
         }
+        if (super.getE2().getVariables().isEmpty()) {
+            try {
+                double res = super.getE2().evaluate();
+                if (res < 0.00001) {
+                    return new Num(1);
+                }
+
+            } catch (Exception e) {
+                return null;
+            }
+        }
+
+        if (super.getE1() instanceof Pow) {
+            Pow firstPow = (Pow) super.getE1();
+            return new Pow(firstPow.getE1().simplify(),
+                    new Mult(firstPow.getE2().simplify(), super.getE2().simplify()));
+        }
         return new Pow(super.getE1().simplify(), super.getE2().simplify());
     }
+
+
+
+
+
 
 
 }

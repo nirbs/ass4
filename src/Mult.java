@@ -181,4 +181,5 @@ public class Mult extends BinaryExpression implements Expression {
         }
         return new Mult(super.getE1().simplify(), super.getE2().simplify());
     }
+
 }

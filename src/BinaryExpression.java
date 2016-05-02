@@ -29,7 +29,12 @@ public abstract class BinaryExpression extends BaseExpression {
      */
     public List<String> getVariables() {
         List newList = super.getVariables();
-        newList.addAll(e2.getVariables());
+        List<String> updateList = e2.getVariables();
+        for (String s: updateList) {
+            if (!newList.contains(s)) {
+                newList.add(s);
+            }
+        }
         return newList;
     }
 
@@ -40,4 +45,5 @@ public abstract class BinaryExpression extends BaseExpression {
     public Expression getE2() {
         return e2;
     }
+
 }
