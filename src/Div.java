@@ -148,29 +148,26 @@ public class Div extends BinaryExpression implements Expression {
      * @return A simplified version on the expression.
      */
     public Expression simplify() {
+        Expression exp1 = super.getE1().simplify();
+        Expression exp2 = super.getE2().simplify();
         try {
-            // Check if the Expression has no variables.
-            if (getVariables().isEmpty()) {
-                return new Num(evaluate());
+            if (exp1.getVariables().isEmpty() && exp2.getVariables().isEmpty()) {
+                return new Num(exp1.evaluate() / exp2.evaluate());
             }
-            // Check if e2 has no variables.
-            if (super.getE2().getVariables().isEmpty()) {
-                double res = super.getE2().evaluate();
-                // Check if e2 equals 1.
-                if (res < 1.00001) {
-                    return super.getE1().simplify();
+            if (exp2.getVariables().isEmpty()) {
+                double res = exp2.evaluate();
+                if (Math.abs(res - 1.0) < 0.00001) {
+                    return exp1;
                 }
-                return new Div(super.getE1().simplify(), res);
+                return new Div(exp1, new Num(res));
             }
-        } catch (Exception e) {
+        } catch(Exception e) {
             return null;
-
         }
-        // Check if e1 equals e2.
-        if (super.getE1().toString().equals(super.getE2().toString())) {
+        if (exp1.toString().equals(exp2.toString())) {
             return new Num(1);
         }
-        return new Div(super.getE1().simplify(), super.getE2().simplify());
+        return new Div(exp1,exp2);
     }
 
 }

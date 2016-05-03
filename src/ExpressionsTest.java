@@ -19,10 +19,6 @@ public class ExpressionsTest {
         myMap.put("x", 2.0);
         myMap.put("y", 0.25);
         myMap.put("e", 2.71);
-        myMap.put("0.0", 0.0);
-        myMap.put("1.0", 1.0);
-        myMap.put("2.0", 2.0);
-        myMap.put("4.0", 4.0);
         try {
             System.out.println(e.evaluate(myMap));
         } catch (Exception ex) {

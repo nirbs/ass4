@@ -152,18 +152,18 @@ public class Log extends BinaryExpression implements Expression {
      * @return A simplified version on the expression.
      */
     public Expression simplify() {
-        // Check if the Expression has no variables.
-        if (getVariables().isEmpty()) {
+        Expression exp1 = super.getE1().simplify();
+        Expression exp2 = super.getE2().simplify();
+        if (exp1.getVariables().isEmpty() && exp2.getVariables().isEmpty()) {
             try {
-                return new Num(evaluate());
+                return new Num(Math.log(exp1.evaluate()) / Math.log(exp2.evaluate()));
             } catch (Exception e) {
                 return null;
             }
         }
-        // Check if the two Expression are equal.
-        if (super.getE1().toString().equals(super.getE2().toString())) {
+        if (exp1.toString().equals(exp2.toString())) {
             return new Num(1);
         }
-        return new Log(super.getE1().simplify(), super.getE2().simplify());
+        return new Log(exp1,exp2);
     }
 }

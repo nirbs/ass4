@@ -34,9 +34,8 @@ public class Num implements Expression {
      */
     public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
-            return assignment.get(toString());
+            return this.evaluate();
         } catch (Exception e) {
-            System.out.println("No such expression!");
             throw e;
         }
     }
@@ -50,7 +49,7 @@ public class Num implements Expression {
         try {
             return this.num;
         } catch (Exception e) {
-            System.out.println("No such expression!");
+            System.out.println("Cant evaluate!");
             throw e;
         }
     }

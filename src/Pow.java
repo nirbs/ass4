@@ -43,6 +43,7 @@ public class Pow extends BinaryExpression implements Expression {
         super(new Num(n), e);
     }
 
+
     /**
      * Pow constructor.
      * @param s the name of the var of the first Expression which will be a Var Expression
@@ -144,7 +145,7 @@ public class Pow extends BinaryExpression implements Expression {
         return new Mult(this,
                 new Plus(new Mult(super.getE1().differentiate(var),
                         new Div(super.getE2(), super.getE1())), new Mult(super.getE2().differentiate(var),
-                        new Log(new Const("e", 2.71828), super.getE1()))));
+                        new Log(new Const("e", 2.71), super.getE1()))));
     }
 
 
@@ -157,8 +158,9 @@ public class Pow extends BinaryExpression implements Expression {
         Expression exp2 = super.getE2().simplify();
         if (exp1.getVariables().isEmpty() && exp2.getVariables().isEmpty()) {
             try {
-                new Num(this.evaluate());
-            } catch (Exception e) {
+                new Num(Math.pow(exp1.evaluate(),exp2.evaluate()));
+            } catch(Exception e) {
+                return null;
             }
         }
         return new Pow(exp1, exp2);
