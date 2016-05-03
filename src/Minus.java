@@ -157,6 +157,7 @@ public class Minus extends BinaryExpression implements Expression {
             }
             if (exp1.getVariables().isEmpty()) {
                 double res = exp1.evaluate();
+                // Check if exp1 equals 0.
                 if (Math.abs(res) < 0.00001) {
                     return new Neg(exp2);
                 }
@@ -164,6 +165,7 @@ public class Minus extends BinaryExpression implements Expression {
             }
             if (exp2.getVariables().isEmpty()) {
                 double res = exp2.evaluate();
+                // Check if exp2 equals 0.
                 if (Math.abs(res) < 0.00001) {
                     return exp1;
                 }

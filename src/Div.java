@@ -156,6 +156,7 @@ public class Div extends BinaryExpression implements Expression {
             }
             if (exp2.getVariables().isEmpty()) {
                 double res = exp2.evaluate();
+                // Check if exp2 equals 1.
                 if (Math.abs(res - 1.0) < 0.00001) {
                     return exp1;
                 }

@@ -163,6 +163,7 @@ public class Pow extends BinaryExpression implements Expression {
 
             // Bonus part x^0 => 1.
             if (exp2.getVariables().isEmpty()) {
+                // Check exp2 equals 0.
                 if (Math.abs(exp2.evaluate()) < 0.00001) {
                     return new Num(1);
                 }

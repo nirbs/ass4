@@ -158,18 +158,20 @@ public class Mult extends BinaryExpression implements Expression {
             }
             if (exp1.getVariables().isEmpty()) {
                 double res = exp1.evaluate();
+                // Check if exp1 equals 1.
                 if (Math.abs(res - 1.0) < 0.00001) {
                     return exp2;
-                } else if (Math.abs(res) < 0.00001) {
+                } else if (Math.abs(res) < 0.00001) { // Check if exp1 equals 0.
                     return new Num(0);
                 }
                 return new Mult(new Num(res), exp2);
             }
             if (exp2.getVariables().isEmpty()) {
                 double res = exp2.evaluate();
+                // Check if exp2 equals 1.
                 if (Math.abs(res - 1.0) < 0.00001) {
                     return exp1.simplify();
-                } else if (Math.abs(res) < 0.00001) {
+                } else if (Math.abs(res) < 0.00001) { // Check if exp2 equals 0.
                     return new Num(0);
                 }
                 return new Mult(new Num(res), exp1);
