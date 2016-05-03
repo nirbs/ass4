@@ -9,7 +9,7 @@ public class SimplificationDemo {
         Expression e = new Pow(new Mult(new Plus("x", "y"), 3), 0);
         System.out.println(e);
         System.out.println(e.simplify());
-        Expression ex = new Pow(new Pow("x",new Plus("y",3)),"z");
+        Expression ex = new Pow(new Pow("x",new Plus(5,3)),"z");
         System.out.println(ex);
         System.out.println(ex.simplify());
         Expression multPlus = new Plus(new Mult(2,"x"),new Mult(4,"x"));

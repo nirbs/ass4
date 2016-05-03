@@ -156,13 +156,27 @@ public class Pow extends BinaryExpression implements Expression {
     public Expression simplify() {
         Expression exp1 = super.getE1().simplify();
         Expression exp2 = super.getE2().simplify();
-        if (exp1.getVariables().isEmpty() && exp2.getVariables().isEmpty()) {
-            try {
-                new Num(Math.pow(exp1.evaluate(),exp2.evaluate()));
-            } catch(Exception e) {
-                return null;
+        try {
+            if (exp1.getVariables().isEmpty() && exp2.getVariables().isEmpty()) {
+                new Num(Math.pow(exp1.evaluate(), exp2.evaluate()));
             }
+
+            // Bonus part x^0 => 1.
+            if (exp2.getVariables().isEmpty()) {
+                if (Math.abs(exp2.evaluate()) < 0.00001) {
+                    return new Num(1);
+                }
+            }
+
+        } catch (Exception e) {
+            return null;
         }
+
+        // Bonus part x^y^z => x^(y*z).
+        if (exp1 instanceof Pow) {
+            return new Pow(((Pow) exp1).getE1(), new Mult(((Pow) exp1).getE2(), exp2));
+        }
+
         return new Pow(exp1, exp2);
     }
 }
