@@ -1,5 +1,5 @@
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The Expression interface is an interface for mathematical expression.

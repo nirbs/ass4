@@ -2,10 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Matan on 20/04/2016.
- */
-
-/**
  * The BaseExpression is an abstract class the is used by the
  * BinaryExpression and the UnaryExpression classes.
  */
@@ -28,7 +24,7 @@ public abstract class BaseExpression {
     public List<String> getVariables() {
         List<String> newList = new ArrayList<String>();
         List<String> updateList = e1.getVariables();
-        for (String s: updateList) {
+        for (String s : updateList) {
             if (!newList.contains(s)) {
                 newList.add(s);
             }

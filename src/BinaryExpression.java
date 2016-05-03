@@ -30,7 +30,7 @@ public abstract class BinaryExpression extends BaseExpression {
     public List<String> getVariables() {
         List newList = super.getVariables();
         List<String> updateList = e2.getVariables();
-        for (String s: updateList) {
+        for (String s : updateList) {
             if (!newList.contains(s)) {
                 newList.add(s);
             }

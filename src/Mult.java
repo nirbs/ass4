@@ -179,7 +179,7 @@ public class Mult extends BinaryExpression implements Expression {
         } catch (Exception e) {
             return null;
         }
-        return new Mult(exp1,exp2);
+        return new Mult(exp1, exp2);
     }
 
 }

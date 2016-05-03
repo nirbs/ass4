@@ -162,13 +162,13 @@ public class Div extends BinaryExpression implements Expression {
                 }
                 return new Div(exp1, new Num(res));
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             return null;
         }
         if (exp1.toString().equals(exp2.toString())) {
             return new Num(1);
         }
-        return new Div(exp1,exp2);
+        return new Div(exp1, exp2);
     }
 
 }

@@ -101,7 +101,7 @@ public class Sin extends UnaryExpression implements Expression {
         if (exp.getVariables().isEmpty()) {
             try {
                 new Num(exp.evaluate());
-            } catch(Exception e) {
+            } catch (Exception e) {
 
             }
         }

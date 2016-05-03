@@ -164,6 +164,6 @@ public class Log extends BinaryExpression implements Expression {
         if (exp1.toString().equals(exp2.toString())) {
             return new Num(1);
         }
-        return new Log(exp1,exp2);
+        return new Log(exp1, exp2);
     }
 }
