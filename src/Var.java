@@ -28,7 +28,7 @@ public class Var implements Expression {
         try {
             return assignment.get(this.var);
         } catch (Exception e) {
-            System.out.println("No such expression!");
+            System.out.println("Can't evaluate");
             throw e;
         }
     }
@@ -39,7 +39,7 @@ public class Var implements Expression {
      * @throws Exception in case there is no map.
      */
     public double evaluate() throws Exception {
-        throw new Exception("Cant get value without map");
+        throw new Exception("Can't evaluate varf without map");
     }
 
     /**
@@ -72,7 +72,7 @@ public class Var implements Expression {
         if (myVar.equals(this.toString())) {
             return expression;
         }
-        return this;
+        return new Var(this.var);
     }
 
     /**

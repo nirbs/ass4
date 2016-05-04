@@ -45,7 +45,7 @@ public class Sin extends UnaryExpression implements Expression {
         try {
             return Math.sin(super.getE1().evaluate(assignment));
         } catch (Exception e) {
-            System.out.println("No such expression!");
+            System.out.println("Can't evaluate");
             throw e;
         }
     }
@@ -60,7 +60,7 @@ public class Sin extends UnaryExpression implements Expression {
         try {
             return Math.sin(super.getE1().evaluate());
         } catch (Exception e) {
-            System.out.println("No such expression!");
+            System.out.println("Can't evaluate");
             throw e;
         }
     }

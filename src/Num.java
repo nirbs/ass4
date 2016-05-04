@@ -36,6 +36,7 @@ public class Num implements Expression {
         try {
             return this.evaluate();
         } catch (Exception e) {
+            System.out.println("Can't evaluate");
             throw e;
         }
     }

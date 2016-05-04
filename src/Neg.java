@@ -44,7 +44,7 @@ public class Neg extends UnaryExpression implements Expression {
         try {
             return super.getE1().evaluate(assignment) * (-1);
         } catch (Exception e) {
-            System.out.println("No such expression!");
+            System.out.println("Can't evaluate");
             throw e;
         }
     }
@@ -58,7 +58,7 @@ public class Neg extends UnaryExpression implements Expression {
         try {
             return super.getE1().evaluate() * (-1);
         } catch (Exception e) {
-            System.out.println("No such expression!");
+            System.out.println("Can't evaluate");
             throw e;
         }
     }

@@ -98,7 +98,7 @@ public class Minus extends BinaryExpression implements Expression {
         try {
             return super.getE1().evaluate(assignment) - super.getE2().evaluate(assignment);
         } catch (Exception e) {
-            System.out.println("No such expression!");
+            System.out.println("Can't evaluate");
             throw e;
         }
     }
@@ -112,7 +112,7 @@ public class Minus extends BinaryExpression implements Expression {
         try {
             return super.getE1().evaluate() - super.getE2().evaluate();
         } catch (Exception e) {
-            System.out.println("No such expression!");
+            System.out.println("Can't evaluate");
             throw e;
         }
     }

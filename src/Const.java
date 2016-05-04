@@ -31,6 +31,7 @@ public class Const implements Expression {
         try {
             return assignment.get(name);
         } catch (Exception e) {
+            System.out.println("Can't evaluate");
             throw e;
         }
     }
@@ -44,6 +45,7 @@ public class Const implements Expression {
         try {
             return this.value;
         } catch (Exception e) {
+            System.out.println("Can't evaluate");
             throw e;
         }
     }
