@@ -155,7 +155,8 @@ public class Div extends BinaryExpression implements Expression {
      * @return The derivative by var of the expression.
      */
     public Expression differentiate(String var) {
-        return new Neg(new Div(super.getE2().differentiate(var), new Pow(super.getE2(), 2)));
+        return new Div(new Minus(new Mult(super.getE1().differentiate(var), super.getE2()),
+                new Mult(super.getE2().differentiate(var), super.getE1())), new Pow(super.getE2(), 2));
     }
 
     /**

@@ -270,6 +270,7 @@ public class ExpressionsTestPart2 {
             e = new Div(new Var("x") , new Var("x"));
             e = e.differentiate("x");
             value = e.evaluate(assignment);
+            System.out.println(e);
             if (value == 0)
             {
                 System.out.println("good =)");

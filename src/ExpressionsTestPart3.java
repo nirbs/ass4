@@ -153,9 +153,15 @@ public class ExpressionsTestPart3 {
             // (e^100.0) * 1 = (e^100.0)
             
             e = new Mult(new Pow(new Var("e"), new Pow( new Minus(new Mult(new Num(2) , new Num(8)) , new Num(6)), new Num(2))) , new Num(1));
+            System.out.println(e);
+
             e = e.simplify();
+            System.out.println(e);
+
             s = e.toString().toLowerCase().replaceAll("\\s+","").replaceAll("\\s+","");
+            System.out.println(s);
             s = s.toLowerCase();
+            System.out.println(s);
             
             if (s.equals("(e^100.0)") || s.equals("e^100.0") || s.equals("e^100") || s.equals("(e^100)"))
             {

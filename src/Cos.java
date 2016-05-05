@@ -47,7 +47,7 @@ public class Cos extends UnaryExpression implements Expression {
      */
     public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
-            return Math.cos(super.getE1().evaluate(assignment));
+            return Math.cos(Math.toRadians(super.getE1().evaluate(assignment)));
         } catch (Exception e) {
             System.out.println("Can't evaluate");
             throw e;
@@ -63,7 +63,7 @@ public class Cos extends UnaryExpression implements Expression {
      */
     public double evaluate() throws Exception {
         try {
-            return Math.cos(super.getE1().evaluate());
+            return Math.cos(Math.toRadians(super.getE1().evaluate()));
         } catch (Exception e) {
             System.out.println("Can't evaluate");
             throw e;

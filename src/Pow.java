@@ -174,7 +174,7 @@ public class Pow extends BinaryExpression implements Expression {
         Expression exp2 = super.getE2().simplify();
         try {
             if (exp1.getVariables().isEmpty() && exp2.getVariables().isEmpty()) {
-                new Num(Math.pow(exp1.evaluate(), exp2.evaluate()));
+                return new Num(Math.pow(exp1.evaluate(), exp2.evaluate()));
             }
 
             // Bonus part x^0 => 1.

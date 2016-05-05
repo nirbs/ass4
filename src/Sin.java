@@ -48,7 +48,7 @@ public class Sin extends UnaryExpression implements Expression {
      */
     public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
-            return Math.sin(super.getE1().evaluate(assignment));
+            return Math.sin(Math.toRadians(super.getE1().evaluate(assignment)));
         } catch (Exception e) {
             System.out.println("Can't evaluate");
             throw e;
@@ -64,7 +64,7 @@ public class Sin extends UnaryExpression implements Expression {
      */
     public double evaluate() throws Exception {
         try {
-            return Math.sin(super.getE1().evaluate());
+            return Math.sin(Math.toRadians(super.getE1().evaluate()));
         } catch (Exception e) {
             System.out.println("Can't evaluate");
             throw e;

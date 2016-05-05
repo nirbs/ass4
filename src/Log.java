@@ -109,6 +109,11 @@ public class Log extends BinaryExpression implements Expression {
      */
     public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
+            double res1 = super.getE2().evaluate(assignment);
+            double res2 = super.getE2().evaluate(assignment);
+            if (Math.abs(res2 - 1.0) < 0.00001) {
+                return 0.0;
+            }
             return Math.log(super.getE1().evaluate(assignment)) / Math.log(super.getE2().evaluate(assignment));
         } catch (Exception e) {
             System.out.println("Can't evaluate");
