@@ -111,7 +111,7 @@ public class Cos extends UnaryExpression implements Expression {
             try {
                 new Num(exp.evaluate());
             } catch (Exception e) {
-
+                return null;
             }
         }
         return new Cos(exp);

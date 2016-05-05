@@ -110,7 +110,7 @@ public class Neg extends UnaryExpression implements Expression {
             try {
                 new Num(exp.evaluate());
             } catch (Exception e) {
-
+                return null;
             }
         }
         return new Neg(exp);
