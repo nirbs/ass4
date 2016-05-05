@@ -4,6 +4,7 @@ import java.util.Map;
 
 /**
  * The Const class contains a constant variable which will have a name and a value.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 1 May 2016
  */
@@ -13,7 +14,8 @@ public class Const implements Expression {
 
     /**
      * Const constructor.
-     * @param name the name of the const.
+     *
+     * @param name  the name of the const.
      * @param value the value of the const.
      */
     public Const(String name, double value) {
@@ -23,6 +25,7 @@ public class Const implements Expression {
 
     /**
      * evaluate Method evaluates the Expression according to the map it gets.
+     *
      * @param assignment the map for the values of the variables.
      * @return the result of the Expression.
      * @throws Exception in case an invalid Expression was received.
@@ -38,6 +41,7 @@ public class Const implements Expression {
 
     /**
      * evaluate Method evaluates the Expression.
+     *
      * @return the result of the Expression.
      * @throws Exception in case an invalid Expression was received.
      */
@@ -52,6 +56,7 @@ public class Const implements Expression {
 
     /**
      * toString method returns the Expression in string the right string format.
+     *
      * @return the right string format of the expression.
      */
     public String toString() {
@@ -60,6 +65,7 @@ public class Const implements Expression {
 
     /**
      * getVariables method an empty list because there is no variables in a Const Expression.
+     *
      * @return An empty list of strings.
      */
     public List<String> getVariables() {
@@ -69,7 +75,8 @@ public class Const implements Expression {
 
     /**
      * assign Method returns this Num because Num is not a variable so we cant assign it.
-     * @param var the name of the var we want to replace.
+     *
+     * @param var        the name of the var we want to replace.
      * @param expression the Expression we want to replace the Var with.
      * @return This num.
      */
@@ -79,6 +86,7 @@ public class Const implements Expression {
 
     /**
      * differentiate method returns the derivative of the expression according to the var given.
+     *
      * @param var the var we will differentiate by.
      * @return The derivative by var of the expression.
      */
@@ -88,6 +96,7 @@ public class Const implements Expression {
 
     /**
      * simplify method simplifies the expression.
+     *
      * @return A simplified version on the expression.
      */
     public Expression simplify() {

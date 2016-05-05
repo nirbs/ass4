@@ -2,6 +2,7 @@ import java.util.Map;
 
 /**
  * The Neg class is in charge of the negative calculation with the suitable methods.
+ *
  * @author Matan Ben Noach Nir Ben Shalom
  * @version 1.0 1 May 2016
  */
@@ -10,6 +11,7 @@ public class Neg extends UnaryExpression implements Expression {
     /**
      * The constructor gets an expression that inherits the
      * UnaryExpression methods.
+     *
      * @param e is an expression given by the user.
      */
     public Neg(Expression e) {
@@ -19,6 +21,7 @@ public class Neg extends UnaryExpression implements Expression {
     /**
      * The constructor gets a var that inherits the
      * UnaryExpression methods.
+     *
      * @param s is a string given by the user.
      */
     public Neg(String s) {
@@ -28,6 +31,7 @@ public class Neg extends UnaryExpression implements Expression {
     /**
      * The constructor gets a num that inherits the
      * UnaryExpression methods.
+     *
      * @param n is a double variable given by the user.
      */
     public Neg(double n) {
@@ -36,6 +40,7 @@ public class Neg extends UnaryExpression implements Expression {
 
     /**
      * Evaluate is in charge of evaluating the negative of the expression by a map variable given by the user.
+     *
      * @param assignment is a map that holds a variable and its value.
      * @return the negative of the expression.
      * @throws Exception in case the expression does'nt exist.
@@ -51,6 +56,7 @@ public class Neg extends UnaryExpression implements Expression {
 
     /**
      * Evaluate is in charge of evaluating the negative of the expression.
+     *
      * @return the negative of the expression.
      * @throws Exception in case the expression does'nt exist.
      */
@@ -65,6 +71,7 @@ public class Neg extends UnaryExpression implements Expression {
 
     /**
      * toString returns the string representation of negative expression.
+     *
      * @return the string representation of negative expression.
      */
     public String toString() {
@@ -73,7 +80,8 @@ public class Neg extends UnaryExpression implements Expression {
 
     /**
      * assign is in charge of replacing a variable with an expression.
-     * @param var is a given variable from the user.
+     *
+     * @param var        is a given variable from the user.
      * @param expression the expression to replace the variable.
      * @return the new expression after the replacement.
      */
@@ -83,6 +91,7 @@ public class Neg extends UnaryExpression implements Expression {
 
     /**
      * differentiate Method returns the derivative of the expression according to the var given.
+     *
      * @param var the var we will differentiate by.
      * @return The derivative by var of the expression.
      */
@@ -92,6 +101,7 @@ public class Neg extends UnaryExpression implements Expression {
 
     /**
      * simplify method simplifies the expression.
+     *
      * @return A simplified version on the expression.
      */
     public Expression simplify() {

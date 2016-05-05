@@ -2,6 +2,7 @@ import java.util.Map;
 
 /**
  * The Pow class is a pow Expression between two Expressions.
+ *
  * @author Matan Ben Noach Nir Ben Shalom.
  * @version 1.0 1 May 2016.
  */
@@ -9,6 +10,7 @@ public class Pow extends BinaryExpression implements Expression {
 
     /**
      * Pow constructor.
+     *
      * @param e1 the first Expression.
      * @param e2 the second Expression
      */
@@ -18,6 +20,7 @@ public class Pow extends BinaryExpression implements Expression {
 
     /**
      * Pow constructor.
+     *
      * @param e the first Expression.
      * @param n the value of the second Expression which will be a Num Expression.
      */
@@ -27,6 +30,7 @@ public class Pow extends BinaryExpression implements Expression {
 
     /**
      * Pow constructor.
+     *
      * @param e the first Expression.
      * @param s the name of the var of the second Expression which will be a Var Expression
      */
@@ -36,6 +40,7 @@ public class Pow extends BinaryExpression implements Expression {
 
     /**
      * Pow constructor.
+     *
      * @param n the value of the first Expression which will be a Num Expression.
      * @param e the second Expression.
      */
@@ -46,6 +51,7 @@ public class Pow extends BinaryExpression implements Expression {
 
     /**
      * Pow constructor.
+     *
      * @param s the name of the var of the first Expression which will be a Var Expression
      * @param e the second Expression
      */
@@ -55,6 +61,7 @@ public class Pow extends BinaryExpression implements Expression {
 
     /**
      * Pow constructor.
+     *
      * @param v the name of the var of the first Expression which will be a Var Expression
      * @param n the value of the second Expression which will be a Num Expression.
      */
@@ -64,6 +71,7 @@ public class Pow extends BinaryExpression implements Expression {
 
     /**
      * Pow constructor.
+     *
      * @param n the value of the second Expression which will be a Num Expression.
      * @param v the name of the var of the first Expression which will be a Var Expression
      */
@@ -73,6 +81,7 @@ public class Pow extends BinaryExpression implements Expression {
 
     /**
      * Pow constructor.
+     *
      * @param s1 the name of the var of the first Expression which will be a Var Expression
      * @param s2 the name of the var of the second Expression which will be a Var Expression
      */
@@ -82,6 +91,7 @@ public class Pow extends BinaryExpression implements Expression {
 
     /**
      * Pow constructor.
+     *
      * @param n1 the value of the first Expression which will be a Num Expression.
      * @param n2 the value of the second Expression which will be a Num Expression.
      */
@@ -91,6 +101,7 @@ public class Pow extends BinaryExpression implements Expression {
 
     /**
      * evaluate Method calculates first Expression in the power of the second Expression according to the map it gets.
+     *
      * @param assignment the map for the values of the variables.
      * @return the result of the power between the two Expression.
      * @throws Exception in case an invalid Expression was received.
@@ -106,6 +117,7 @@ public class Pow extends BinaryExpression implements Expression {
 
     /**
      * evaluate Method calculates first Expression in the power of the second Expression.
+     *
      * @return the result of the power between the two Expression.
      * @throws Exception in case an invalid Expression was received.
      */
@@ -120,6 +132,7 @@ public class Pow extends BinaryExpression implements Expression {
 
     /**
      * toString method returns the Expression in string the right string format.
+     *
      * @return the right string format of the expression.
      */
     public String toString() {
@@ -128,7 +141,8 @@ public class Pow extends BinaryExpression implements Expression {
 
     /**
      * assign Method finds the var wanted and replaces it with a new expression.
-     * @param var the name of the var we want to replace.
+     *
+     * @param var        the name of the var we want to replace.
      * @param expression the Expression we want to replace the Var with.
      * @return The new Expression with the Var replaced with the Expression.
      */
@@ -138,6 +152,7 @@ public class Pow extends BinaryExpression implements Expression {
 
     /**
      * differentiate Method returns the derivative of the expression according to the var given.
+     *
      * @param var the var we will differentiate by.
      * @return The derivative by var of the expression.
      */
@@ -151,6 +166,7 @@ public class Pow extends BinaryExpression implements Expression {
 
     /**
      * simplify method simplifies the expression.
+     *
      * @return A simplified version on the expression.
      */
     public Expression simplify() {

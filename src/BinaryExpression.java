@@ -14,6 +14,7 @@ public abstract class BinaryExpression extends BaseExpression {
     /**
      * The constructor creates 2 expressions: The first gets the
      * BaseExpression methods and the second does'nt.
+     *
      * @param e1 is the expression given by the user and inherits the BaseExpression methods.
      * @param e2 is the expression given by the user and it's only a BinaryExpression member.
      */
@@ -25,6 +26,7 @@ public abstract class BinaryExpression extends BaseExpression {
     /**
      * getVariables creates and returns a list with all of the
      * variables in every expression.
+     *
      * @return a list with the variables in the 2 expressions.
      */
     public List<String> getVariables() {
@@ -40,6 +42,7 @@ public abstract class BinaryExpression extends BaseExpression {
 
     /**
      * getE2 returns the e2 Expression.
+     *
      * @return the e2 Expression
      */
     public Expression getE2() {

@@ -10,6 +10,7 @@ public abstract class BaseExpression {
 
     /**
      * The constructor creates an expression.
+     *
      * @param e is the expression given by the user.
      */
     public BaseExpression(Expression e) {
@@ -19,6 +20,7 @@ public abstract class BaseExpression {
     /**
      * getVariables creates and returns a list with all of the
      * variables in every expression.
+     *
      * @return a list with the variables in the expression.
      */
     public List<String> getVariables() {
@@ -35,6 +37,7 @@ public abstract class BaseExpression {
 
     /**
      * getE1 returns the e1 Expression.
+     *
      * @return a the e1 Expression
      */
     public Expression getE1() {

@@ -3,12 +3,14 @@ import java.util.TreeMap;
 
 /**
  * The ExpressionTest class is in charge of testing the code.
+ *
  * @author Matan Ben Noach Nir Ben Shalom.
  * @version 1.0 1 May 2016.
  */
 public class ExpressionsTest {
     /**
      * main method tests our classes and prints the results.
+     *
      * @param args input from command line.
      */
     public static void main(String[] args) {
