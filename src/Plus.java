@@ -7,6 +7,7 @@ import java.util.Map;
  * @version 1.0 1 May 2016.
  */
 public class Plus extends BinaryExpression implements Expression {
+
     /**
      * Plus constructor.
      *

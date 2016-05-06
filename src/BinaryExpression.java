@@ -1,10 +1,6 @@
 import java.util.List;
 
 /**
- * Created by Matan on 20/04/2016.
- */
-
-/**
  * The BinaryExpression is an abstract class the is used by every
  * binary expression. It inherits the base expression methods.
  */
