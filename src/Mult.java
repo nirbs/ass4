@@ -190,7 +190,7 @@ public class Mult extends BinaryExpression implements Expression {
                 } else if (Math.abs(res) < 0.00001) { // Check if exp2 equals 0.
                     return new Num(0);
                 }
-                return new Mult(new Num(res), exp1);
+                return new Mult(exp1, new Num(res));
             }
         } catch (Exception e) {
             return null;

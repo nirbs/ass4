@@ -38,7 +38,7 @@ public class Num implements Expression {
      */
     public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
-            return this.evaluate();
+            return this.num;
         } catch (Exception e) {
             System.out.println("Can't evaluate");
             throw e;

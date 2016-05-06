@@ -25,12 +25,6 @@ public abstract class BaseExpression {
      */
     public List<String> getVariables() {
         List<String> newList = new ArrayList<String>();
-        List<String> updateList = e1.getVariables();
-        for (String s : updateList) {
-            if (!newList.contains(s)) {
-                newList.add(s);
-            }
-        }
         newList.addAll(e1.getVariables());
         return newList;
     }

@@ -20,7 +20,6 @@ public class ExpressionsTest {
         Map<String, Double> myMap = new TreeMap<String, Double>();
         myMap.put("x", 2.0);
         myMap.put("y", 0.25);
-        myMap.put("e", 2.71);
         try {
             System.out.println(e.evaluate(myMap));
         } catch (Exception ex) {

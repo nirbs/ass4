@@ -109,12 +109,7 @@ public class Log extends BinaryExpression implements Expression {
      */
     public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
-            double res1 = super.getE2().evaluate(assignment);
-            double res2 = super.getE2().evaluate(assignment);
-            if (Math.abs(res2 - 1.0) < 0.00001) {
-                return 0.0;
-            }
-            return Math.log(super.getE1().evaluate(assignment)) / Math.log(super.getE2().evaluate(assignment));
+            return Math.log(super.getE2().evaluate(assignment)) / Math.log(super.getE1().evaluate(assignment));
         } catch (Exception e) {
             System.out.println("Can't evaluate");
             throw e;
@@ -129,7 +124,7 @@ public class Log extends BinaryExpression implements Expression {
      */
     public double evaluate() throws Exception {
         try {
-            return Math.log(super.getE1().evaluate()) / Math.log(super.getE2().evaluate());
+            return Math.log(super.getE2().evaluate()) / Math.log(super.getE1().evaluate());
         } catch (Exception e) {
             System.out.println("Can't evaluate");
             throw e;
@@ -163,7 +158,7 @@ public class Log extends BinaryExpression implements Expression {
      * @return The derivative by var of the expression.
      */
     public Expression differentiate(String var) {
-        return new Mult(new Div(1, (new Mult(super.getE2(), new Log(new Const("e", 2.71828), super.getE1())))),
+        return new Mult(new Div(1, (new Mult(super.getE2(), new Log(new Const("e", 2.71), super.getE1())))),
                 super.getE2().differentiate(var));
     }
 
@@ -177,7 +172,7 @@ public class Log extends BinaryExpression implements Expression {
         Expression exp2 = super.getE2().simplify();
         if (exp1.getVariables().isEmpty() && exp2.getVariables().isEmpty()) {
             try {
-                return new Num(Math.log(exp1.evaluate()) / Math.log(exp2.evaluate()));
+                return new Num(Math.log(exp2.evaluate()) / Math.log(exp1.evaluate()));
             } catch (Exception e) {
                 return null;
             }

@@ -32,7 +32,7 @@ public class Const implements Expression {
      */
     public double evaluate(Map<String, Double> assignment) throws Exception {
         try {
-            return assignment.get(name);
+            return this.value;
         } catch (Exception e) {
             System.out.println("Can't evaluate");
             throw e;
