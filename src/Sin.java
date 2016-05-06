@@ -77,7 +77,7 @@ public class Sin extends UnaryExpression implements Expression {
      * @return the string representation of sine expression.
      */
     public String toString() {
-        return "(" + "sin(" + super.getE1().toString() + "))";
+        return "sin(" + super.getE1().toString() + ")";
     }
 
     /**

@@ -137,7 +137,7 @@ public class Log extends BinaryExpression implements Expression {
      * @return the right string format of the expression.
      */
     public String toString() {
-        return "log(" + super.getE1().toString() + "," + super.getE2().toString() + ")";
+        return "log(" + super.getE1().toString() + ", " + super.getE2().toString() + ")";
     }
 
     /**
